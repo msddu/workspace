@@ -11,14 +11,14 @@ public class Porsche extends Car {
 }
 
 
-	public Porsche(boolean openTheDoor) {
-	super();
-	this.openTheDoor = openTheDoor;
-    }
 
-	public Porsche(int i, int j, String string) {
-		// TODO Auto-generated constructor stub
+
+	public Porsche(int wheel, int seat, String fuel, boolean openTheDoor) {
+		super(wheel, seat, fuel);
+		this.openTheDoor = openTheDoor;
 	}
+
+
 
 
 	public boolean isOpenTheDoor() {
@@ -36,6 +36,9 @@ public class Porsche extends Car {
 		return super.toString() + "Porche [openTheDoor=" + openTheDoor + "]";
 	}
 	
-	
+	@Override
+	public void bindingTest() {
+		System.out.println("Porsche 자료형 입니다.");
+	}
 	
 }
