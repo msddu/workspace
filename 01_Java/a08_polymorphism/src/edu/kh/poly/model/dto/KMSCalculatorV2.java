@@ -34,7 +34,8 @@ public class KMSCalculatorV2 implements Calculator{
 
 	@Override
 	public int pow(int a, int x) {
-		return 0;
+		                        //재귀 호출
+		return x == 1 ? a : a * pow(a, x-1);
 	}
 
 }

@@ -17,7 +17,7 @@ public class CalculatorRun {
 		//Calculator calc = new KMSCalculator();
 		Calculator calc = new JYJCalculator();
 		
-	System.out.println( calc.plus(10,5) );
+		System.out.println( calc.plus(10,5) );
 		
 		System.out.println( calc.minus(10,5) );
 		

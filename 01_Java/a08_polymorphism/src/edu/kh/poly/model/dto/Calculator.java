@@ -3,7 +3,7 @@ package edu.kh.poly.model.dto;
 //인터페이스 : 접점
 //-상수형 필드(public static final)
 //-추상 메서드(public abstract)
-//객체 생성은 안되나 참조형 변수로 사용가능(다형성)
+//객체 생성은 안되나 참조형 변수로 사용가능(다형성
 
 //계산기 인터페이스
 //-> 모든 계산기가 가지는 공통 상수 필드

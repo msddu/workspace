@@ -8,7 +8,7 @@ public class ExceptionRun {
 		
 		ExceptionService EX = new ExceptionService();
 		
-		EX.ex8();
+		EX.ex1();
 		
 		
 		
