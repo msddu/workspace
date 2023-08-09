@@ -6,7 +6,7 @@ public class ListEXRun {
 		
 		ListEX ls = new ListEX();
 		
-		ls.ex1();
+		ls.ex2();
 		
 		
 		
@@ -16,3 +16,5 @@ public class ListEXRun {
 	}
 
 }
+
+
