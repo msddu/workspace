@@ -127,6 +127,7 @@ public class Student implements Comparable<Student>{
 	//A.equals(B) 의 결과가 true이면 
 	//A.hashCode() == B.hashCode()의 결과도 true여야 한다.
 	//*************************************************
+	
 	@Override
 	public int hashCode() {
 		//Objects : Object 관련 유용한 메서드 모음
