@@ -12,7 +12,7 @@ public class IORun {
 		IOService service = new IOService();
 		
 		//service.byteOutput();
-		service.charInput();
+		service.objectInput();
 		
 		
 	}
