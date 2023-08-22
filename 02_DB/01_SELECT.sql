@@ -208,6 +208,291 @@ FROM EMPLOYEE
 WHERE SALARY NOT BETWEEN 3000000 AND 5000000;
 
 
+--EMPLOYEE 테이블에서
+--부서코드가 'D5' , 'D6', 'D9'인 사원의
+--이름 , 부서코드 , 급여 조회
+SELECT EMP_NAME 이름, DEPT_CODE 부서코드, SALARY 급여
+FROM EMPLOYEE 
+WHERE DEPT_CODE  = 'D5' OR DEPT_CODE = 'D6' OR DEPT_CODE  = 'D9'; 
+
+
+--컬럼명 IN(값1 , 값2, 값3 ...) 
+--컬럼의 값이 () 내부의 값과 하나라도 일치하면 TRUE
+SELECT EMP_NAME 이름, DEPT_CODE 부서코드, SALARY 급여
+FROM EMPLOYEE 
+WHERE DEPT_CODE IN('D5', 'D6' ,'D9');
+
+
+--컬럼명 IN(값1 , 값2, 값3 ...) 
+--컬럼의 값이 () 내부의 값과 하나라도 일치하면 FALSE
+  -->하나도 일치 안하면 TRUE
+SELECT EMP_NAME 이름, DEPT_CODE 부서코드, SALARY 급여
+FROM EMPLOYEE 
+WHERE DEPT_CODE NOT IN('D5', 'D6' ,'D9');
+
+-->11행이 조회돼야 하는데 9행만 조회되었다.
+--왜? DEPT_CODE가 NULL 행이 2행이 있어서 그렇다
+--NULL은 비교 , 논리 연산 시 연산의 대상이 되지 않음
+----------------------------------------------------------------
+
+--NULL처리 연산
+
+--IS NULL : 컬럼값이 NULL이면 TRUE
+--IS NOT NULL : 컬럼값이 NULL이 아니면 TRUE
+
+--EMPLOYEE테이블에서 DEPT_CODE가 NULL인 사원의 이름, 부서코드 조회
+SELECT EMP_NAME 이름 , DEPT_CODE 부서코드
+FROM EMPLOYEE 
+WHERE DEPT_CODE IS NULL;
+
+--EMPLOYEE 테이블에서 BONUS컬럼의 값이 NULL이 아닌 사원의
+--이름,  보너스 조회
+SELECT EMP_NAME, BONUS 
+FROM EMPLOYEE 
+WHERE BONUS IS NOT NULL;
+
+---------------------------------------------------------------
+
+/* LIKE
+ * 
+ * - 비교하려는 값이 특정한 패턴을 만족 시키면(TRUE) 조회하는 연산자
+ * 
+ * [작성법]
+ * WHERE 컬럼명 LIKE '패턴'
+ * 
+ * - LIKE 패턴( == 와일드 카드  ) 
+ * 
+ * '%' (포함)
+ * - '%A' : 문자열이 앞은 어떤 문자든 포함되고 마지막은 A
+ *          -> A로 끝나는 문자열
+ * - 'A%' : A로 시작하는 문자열
+ * - '%A%' : A가 포함된 문자열
+ *  
+ * 
+ * '_' (글자 수)
+ * - 'A_' : A 뒤에 아무거나 한 글자만 있는 문자열
+ *          (AB ,A1, AQ, A가)
+ * 
+ * - '___A' : A 앞에 아무거나 3글자만 있는 문자열
+ */
+
+
+
+
+--EMPLOYEE 테이블에서 성이 '전' 씨인 사원의 사번 , 이름 조회
+SELECT EMP_ID, EMP_NAME 
+FROM EMPLOYEE 
+WHERE EMP_NAME LIKE '전%';
+
+--EMPLOYEE 테이블에서 성이 '수'로 끝나난 사원의 사번 , 이름 조회
+SELECT EMP_ID, EMP_NAME 
+FROM EMPLOYEE 
+WHERE EMP_NAME LIKE '%수';
+
+--EMPLOYEE 테이블에서 이름에 '하'가 포함되는 사원의 사번 , 이름 조회
+SELECT EMP_ID, EMP_NAME 
+FROM EMPLOYEE 
+WHERE EMP_NAME LIKE '%하%';
+
+--EMPLOYEE 테이블에서 이름이 '전'으로 시작해서 '돈'으로 끝나는 사원의 사번 , 이름 조회
+SELECT EMP_ID, EMP_NAME 
+FROM EMPLOYEE 
+WHERE EMP_NAME LIKE '전%돈';
+
+
+--------------------------
+
+--EMPLOYEE 테이블에서 
+--전화번호가 010으로 시작하는 사원의 이름, 전화번호 조회
+
+--'%'버전
+SELECT EMP_NAME, PHONE
+FROM EMPLOYEE 
+WHERE PHONE LIKE '010%';
+
+--'-' 버전
+SELECT EMP_NAME, PHONE
+FROM EMPLOYEE 
+WHERE PHONE LIKE '010________';
+
+
+
+--EMPLOYEE테이블에서 
+--EMAIL의 아이디(@ 앞의 글자)의 글자수가 5글자인 사원의 
+--이름, EMAIL을 조회
+
+SELECT EMP_NAME, EMAIL
+FROM EMPLOYEE 
+WHERE EMAIL LIKE '_____@%';
+
+
+--EMPLOYEE테이블에서
+--이메일의 아이디 중 '_' 앞 쪽 글자의 수가 3글자인 사원의 
+--사번 , 이름, 이메일을 조회
+
+SELECT EMP_NAME, EMAIL
+FROM EMPLOYEE 
+WHERE EMAIL LIKE '_____%';
+
+-->문제점 : 와일드 카드 표기법 '_'와 
+--        기준으로 삼을 문자열 '_'가 둘 다 와일드카드로 해석되어 
+--        조건식의 의미가 의도와 다르게 작성됨
+
+--> 해결 방법 : LIKE의 ESCAPE 옵션을 사용
+-->ESCAOE 옵션 : 와일드 카드의 의미를 벗어나 단순 문자열로 인식
+-->     적용범위: 특수문자 뒤 한 글자
+
+SELECT EMP_NAME, EMAIL
+FROM EMPLOYEE 
+WHERE EMAIL LIKE '___^_%' ESCAPE '^';
+
+
+---------------------------------------------------------------------------
+--날짜(DATE)비교하기 
+
+--EMPLOYEE테이블에서 입사일이 
+--'1990/1/1'~'2000/12/31'사이인 사원의
+--사번,이름, 입사일 조회
+
+SELECT EMP_ID 사번 , EMP_NAME 이름 , HIRE_DATE 입사일  
+FROM EMPLOYEE 
+WHERE HIRE_DATE >= '1990/1/1' AND HIRE_DATE <= '2000/12/31';
+
+
+SELECT EMP_ID 사번 , EMP_NAME 이름 , HIRE_DATE 입사일  
+FROM EMPLOYEE 
+WHERE HIRE_DATE BETWEEN '1990-01-01' AND '2000-12-31';
+
+--'2000/12/31' 는 정확히는 문자열 형식이지만 
+--날짜를 형식의 문자열이기 때문에 
+--HIRE_DATE (DATE타입) 비교시 자동으로 형변환(parsing)이 진행된다.
+
+-->사용자(개발자)가 직접 SQL에 날짜를 입력할 때
+--날짜 형식의 문자열을 작성한다(2023/08/22, 2023-08-22, 20230822)
+
+-->날짜(DATE)타입은 비교가 가능하다!
+
+--------------------------------------------------------------------
+
+/* ORDER BY 절
+ * 
+ * - SELECT문의 조회 결과(RESULT SET)를 정렬할 때 사용하는 구문
+ * 
+ * - *** SELECT구문에서 제일 마지막에 해석된다! ***
+ * 
+ * [작성법]
+ * 3: SELECT 컬럼명 AS 별칭, 컬럼명, 컬럼명, ...
+ * 1: FROM 테이블명
+ * 2: WHERE 조건식
+ * 4: ORDER BY 컬럼명 | 별칭 | 컬럼 순서 [오름/내림 차순] 
+ *            [NULLS FIRST | LAST]
+ * */
+
+
+--EMPLOYEE테이블에서 
+--급여 오름차순으로 이름, 급여를 조회
+SELECT EMP_NAME , SALARY 
+FROM EMPLOYEE 
+ORDER BY SALARY ASC;  --ASC : 오름차순
+
+
+SELECT EMP_NAME , SALARY 
+FROM EMPLOYEE 
+ORDER BY SALARY DESC; --DESC : 오름차순
+
+
+--EMPLOYEE 테이블에서 부서코드가 'D5', 'D6', 'D9'인 사원의
+--사번, 이름, 부서코드를 부서코드 오름차순 으로 조회
+
+SELECT EMP_ID , EMP_NAME  , DEPT_CODE 
+FROM EMPLOYEE 
+WHERE DEPT_CODE IN('D5' , 'D6' ,'D9')
+ORDER BY DEPT_CODE /*ASC*/; --ASC가 기본값(생략 가능)
+
+
+--EMPLOYEE 테이블에서
+--급여가 300만 이상, 600만 미만 사원의 
+--사번, 이름, 급여를 이름 내림차순으로 조회
+SELECT EMP_ID , EMP_NAME, SALARY 
+FROM EMPLOYEE 
+WHERE SALARY >= 3000000 AND SALARY < 6000000
+ORDER BY 2 DESC;   --2번 컬럼 내림차순으로 조회
+
+
+
+--ORDER BY절에는 계산식 , 함수식 작성도 가능하다
+--EMPLOYEE 테이블에서
+--이름, 연봉을 연봉 내림차순으로 조회
+SELECT EMP_NAME 이름, SALARY * 12 연봉
+FROM EMPLOYEE 
+ORDER BY SALARY * 12 DESC;  
+
+
+/*ORDER BY절에는 별칭 작성도 가능!(해석 순서 중요)*/
+--연봉이 3500만 이상인 사원의 
+--사번, 이름, 연봉을 연봉 오름차순으로 조회
+
+WHERE SALARY * 12 >= 35000000
+ORDER BY 연봉 ASC;  
+--SELECT절 해석 후 ORDER BY절이 해석되기 때문에
+--SELECT절에서 해석된 별칭을 다음 순서인 ORDER BY절에서 사용 가능
+
+
+--모든 사원의 이름, 전화번호 조회
+
+/*정렬 시 컬럼값이 NULL인 행 정렬 방법 지정*/
+SELECT EMP_NAME, PHONE 
+FROM EMPLOYEE;
+--ORDER BY PHONE NULLS LAST;  --> 오름차순 -> NULL은 마지막에 배치(기본값)
+--ORDER BY PHONE NULLS FIRST; --오름차순 -> NULL이 처음 부분에 배치
+
+--ORDER BY PHONE DESC NULLS FIRST; --내림차순 -> NULL이 처음 부분에 배치(기본값)
+--ORDER BY PHONE DESC NULLS LAST; --내림차순 -> NULL이 마지막에 배치
+
+
+/*정렬 중첩*/
+--킄 분류를 먼저 정렬하고 
+--작은 분류를 큰 분류가 흐트러지지 않는 선에서 정렬
+
+--EMPLOYEE테이블에서 
+--이름, 부서코드, 급여를
+--부서 오름차순, 급여 내림차순으로 조회
+
+SELECT EMP_NAME, DEPT_CODE, SALARY
+FROM EMPLOYEE
+ORDER BY DEPT_CODE, SALARY DESC;
+
+--이름, 부서코드, 직급코드
+--부서코드 내림차순, 직급코드 오름차순, 이름 오름차순
+SELECT EMP_NAME , DEPT_CODE , JOB_CODE 
+FROM EMPLOYEE 
+ORDER BY DEPT_CODE DESC, JOB_CODE , EMP_NAME;
+
+
+/*SELECT절에 작성되지 않은 컬럼으로도 정렬 기준 작성 가능*/
+--이름, 급여를 사번 내림차순으로 조회
+SELECT /*EMP_ID,*/ EMP_NAME , SALARY
+FROM EMPLOYEE 
+ORDER BY EMP_ID DESC;
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------
+
+
+
+
+
+
+
+
 
 
 
