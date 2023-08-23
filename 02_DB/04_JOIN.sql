@@ -324,15 +324,23 @@ WHERE DEPT_CODE = DEPT_ID AND LOCATION_ID = LOCAL_CODE;
 -- 1. 주민번호가 70년대 생이면서 성별이 여자이고, 성이 '전'씨인 직원들의 
 -- 사원명, 주민번호, 부서명, 직급명을 조회하시오.
 
-      
-      
--- 2. 이름에 '형'자가 들어가는 직원들의 사번, 사원명, 부서명을 조회하시오.
+SELECT EMP_NAME , EMP_NO, DEPT_TITLE , JOB_CODE
+FROM EMPLOYEE
+JOIN DEPARTMENT ON(DEPT_CODE  = DEPT_ID)
+WHERE SUBSTR(EMP_NO , 8, 1) = 2 AND EMP_NAME LIKE '전%';
 
+-- 2. 이름에 '형'자가 들어가는 직원들의 사번, 사원명, 부서명을 조회하시오.
+SELECT EMP_ID 사번, EMP_NAME 사원명, DEPT_TITLE 부서명
+FROM EMPLOYEE 
+JOIN DEPARTMENT ON(DEPT_CODE  =  DEPT_ID)
+WHERE EMP_NAME LIKE '%형%';
 
 
 -- 3. 해외영업 1부, 2부에 근무하는 사원의 
 -- 사원명, 직급명, 부서코드, 부서명을 조회하시오.
 
+FROM EMPLOYEE 
+JOIN DEPARTMENT 
 
 --4. 보너스포인트를 받는 직원들의 사원명, 보너스포인트, 부서명, 근무지역명을 조회하시오.
 
