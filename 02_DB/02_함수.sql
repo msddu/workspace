@@ -400,6 +400,109 @@ SELECT EMP_ID, EMP_NAME , SALARY,
 FROM EMPLOYEE
 WHERE DEPT_CODE IN('D6', 'D9')
 ORDER BY JOB_CODE;
+-----------------------------------------------------------
+
+/********************그룹 함수*******************/
+
+--SUM(숫자가 기록된 컬럼명) : 그룹의 합계를 반환
+--모든 사원의 급여 합
+SELECT SUM(SALARY) FROM EMPLOYEE;
+
+--부서 코드가 'D6'인 사원들의 급여 함
+/*3*/SELECT SUM(SALARY)
+/*1*/FROM EMPLOYEE 
+/*2*/WHERE DEPT_CODE  = 'D6';
+
+
+
+--2000년(포함) 이후 입사자들의 급여 함
+SELECT SUM(SALARY)
+FROM EMPLOYEE 
+WHERE EXTRACT (YEAR FROM HIRE_DATE) >= 2000;
+
+
+--------------------------------------
+--AVG(숫자만 기록된 컬럼) : 그룹의 평균
+
+--모든 사원의 급여 평균
+SELECT AVG(SALARY)
+FROM EMPLOYEE;
+
+--모든 사원의 급여 평균(소수점 반올림 처리)
+SELECT ROUND(AVG(SALARY)) "급여 평균"
+FROM EMPLOYEE;
+
+--그룹 함수는 동시에 여러개를 작성 가능
+SELECT SUM(SALARY) 합계 , AVG(SALARY) 평균 FROM EMPLOYEE;
+
+--------------------------------------------
+
+--MAX(컬럼명) : 최대값
+--MIN(컬럼명) : 최소값
+
+--날짜의 대소 비교 : 과거 < 미래
+--문자열 대소 비교 : 유니코드순서(문자열 순서 A < Z)
+
+--모든 사원의 급여 합계, 평균, 최대값, 최소값 조회
+SELECT  SUM(SALARY) , AVG(SALARY), 
+		MAX(SALARY) , MIN(SALARY) 
+FROM EMPLOYEE;
+
+--모든 사원 중
+--가장 빠른 입사일, 최근 입사일
+--이름 오름차순에서 제일 먼저 작성되는 이름, 마지막에 작성되는 이름
+
+SELECT MIN(HIRE_DATE),MAX(HIRE_DATE), MAX(EMP_NAME) , MIN(EMP_NAME) 
+FROM EMPLOYEE;
+
+-------------------------------------------------------------------------------
+
+--COUNT(* | [DISTICT]컬럼명) : 조회된 행의 개수를 반환
+
+--COUNT(*) : 조회된 모든 행의 개수를 반환
+
+--COUNT(컬럼명) : 지정된 컬럼값이 NULL이 아닌 행의 개수를 반환
+--				(NULL미포함) 
+
+--COUNT(DISTINCT 컬럼명) : 지정된 컬럼에서 중복 값을 제외한 행의 개수를 반환
+--						 EX) A A B C D D D E : 5개 (중복은 한 번만 카운트)
+
+SELECT COUNT(*) FROM EMPLOYEE; --23(행)
+
+SELECT COUNT(*) FROM EMPLOYEE 
+WHERE DEPT_CODE  = 'D6';       --3(행)
+
+
+
+--전화 번호가 있는 사원은 몇명인지 조회
+SELECT COUNT(PHONE) FROM EMPLOYEE; --20
+
+
+--EMPLOYEE테이블에 존재하는 부서코드의 수를 조회
+SELECT COUNT(DISTINCT DEPT_CODE) "부서코드"
+FROM EMPLOYEE;
+
+
+--EMPLOYEE테이블에 존재하는 여자 사원의 수 
+SELECT COUNT(*)
+FROM EMPLOYEE 
+WHERE SUBSTR(EMP_NO, 8, 1) = 2;
+
+
+SELECT SUM(DECODE(SUBSTR(EMP_NO, 8, 1), 1, 0 ,0))남자,
+		SUM(DECODE(SUBSTR(EMP_NO, 8, 1), 2, 0 ,0))여자
+FROM EMPLOYEE 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
