@@ -337,15 +337,23 @@ WHERE EMP_NAME LIKE '%형%';
 
 
 -- 3. 해외영업 1부, 2부에 근무하는 사원의 
--- 사원명, 직급명, 부서코드, 부서명을 조회하시오.
+-- 사원명(EM), 직급명(job), 부서코드(DE), 부서명(DE) 을 조회하시오.
+SELECT E.EMP_NAME , J.JOB_NAME, D.DEPT_CODE, D.DEPT_NAME
+FROM EMPLOYEE E 
+JOIN JOB J ON(E.JOB_CODE = J.JOB_CODE)
+JOIN DEPARTMENT D ON()
+WHERE LOCATION ID IN('해외영업1부', '해외영업2부');
 
-FROM EMPLOYEE 
-JOIN DEPARTMENT 
-
---4. 보너스포인트를 받는 직원들의 사원명, 보너스포인트, 부서명, 근무지역명을 조회하시오.
+--4. 보너스포인트를 받는 직원들의 사원명(E), 보너스포인트(E), 부서명(D), 근무지역명(L)을 조회하시오.
+SELECT E.EMP_NAME , E.BONUS , D.DEPT_ID , L.LOCAL_NAME 
+FROM EMPLOYEE E
+JOIN DEPARTMENT D ON (E.DEPT_CODE = D.DEPT_ID)
+JOIN LOCATION L ON (D.LOCATION_ID = L.LOCAL_CODE)
+WHERE BONUS IS NOT NULL;
 
 
 --5. 부서가 있는 사원의 사원명, 직급명, 부서명, 지역명 조회
+
 
 
 -- 6. 급여등급별 최소급여(MIN_SAL)를 초과해서 받는 직원들의
