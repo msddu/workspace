@@ -55,6 +55,9 @@ public class JDBCExample3 {
 						+ "FROM EMPLOYEE "
 						+ "WHERE SALARY >= "+input1+" AND SALARY <= "+input2+" ORDER BY SALARY DESC";
 			
+			
+			
+			
 			stmt = conn.createStatement();
 			
 			rs =  stmt.executeQuery(sql);
