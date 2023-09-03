@@ -248,4 +248,30 @@ public class MemberDao {
 		return result;
 	}
 
+	public int insertMember2(Connection conn, Member member) {
+		
+		int result = 0; //최종 결과값 저장
+		
+		
+		String sql = "INSERT INTO MEMBER "
+				+ "VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, ?, DEFAULT, DEFAULT)" ; 
+		
+		
+		
+		try {
+			
+			
+			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			
+		}
+		
+		return result;
+	}
+
 }

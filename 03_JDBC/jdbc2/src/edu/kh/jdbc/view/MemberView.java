@@ -26,6 +26,7 @@ public class MemberView {
 				System.out.println("2. 회원 정보 수정(UPDATE)");
 				System.out.println("3. 회원 탈퇴(DELETE)");
 				System.out.println("4. 비밀번호 변경(UPDATE)");
+				System.out.println("5. 회원 가입 두번째 (INSERT)");
 				System.out.println("0. 종료");
 				
 				System.out.print("메뉴선택>>");
@@ -38,7 +39,8 @@ public class MemberView {
 				case 1 : insertMember();  break;
 				case 2 : updateMember();  break;
 				case 3 : deleteMember();  break;
-				case 4 : updatePw();  break;
+				case 4 : updatePw();  	  break;
+				case 5 : insertMember2();  break;
 				case 0 : System.out.println("\n프로그램 종료\n"); break;
 				default : System.out.println("\n메뉴에 작성된 번호만 입력하세요\n");
 				
@@ -208,6 +210,37 @@ public class MemberView {
 		}else {
 			System.out.println("변경 실패");
 		}
+	}
+	
+	
+	
+	private void insertMember2() {
+
+		System.out.println("\n*****회원가입*****\n");
+		
+	
+		System.out.print("이메일: ");
+		String email = sc.next();
+		
+		System.out.print("비밀번호: ");
+		String pw = sc.next();
+		
+		System.out.print("닉네임: ");
+		String nickname = sc.next();
+		
+		System.out.print("휴대폰번호(-제외)");
+		String tel = sc.next();
+		
+		sc.nextLine(); //입력 버퍼 개행문자 제거
+		
+		System.out.print("주소: ");
+		String adress  = sc.nextLine();
+		
+		//입력받은 값을 Member 객체에 저장하기
+		Member member = new Member(email, pw, nickname, tel, adress);
+		
+		
+		
 	}
 	
 	

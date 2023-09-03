@@ -129,4 +129,23 @@ public class MemberService {
 		return result;
 	}
 
+
+	public int insertMember2(Member member) {
+		
+		//JDBCTemplate를 이용해서 커넥션 생
+		Connection conn = getConnection();
+		
+		//DAO메서드 호출(커넥션,매개변수 전달)
+		int result = dao.insertMember2(conn,member);
+		
+		if(result > 0) commit(conn);
+		else           rollback(conn);
+		
+		close(conn);
+		
+		
+		
+		return result;
+	}
+
 }

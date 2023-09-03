@@ -45,6 +45,15 @@ public class Member {
 	}
 	
 	
+	public Member(String memberEmail, String memberPw, String memberNickname, String memberTel) {
+		
+		
+		this.memberEmail = memberEmail;
+		this.memberPw = memberPw;
+		this.memberNickname = memberNickname;
+		this.memberTel = memberTel;
+		
+	}
 	
 	
 	
