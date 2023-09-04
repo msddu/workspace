@@ -3,6 +3,7 @@ package edu.kh.jdbc.model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import static edu.kh.jdbc.common.JDBCTemplate.*;
@@ -273,5 +274,181 @@ public class MemberDao {
 		
 		return result;
 	}
+
+	public int updateDelFl(Connection conn, Member member) {
+		
+		int result = 0;
+		
+		
+		String sql = "DELETE FROM MEMBERS \n"
+				+ "WHERE MEMBER_PWD = ?";
+		
+		
+		try {
+			
+			
+			stmt = conn.prepareStatement(sql);
+			
+			
+			
+			
+			
+			
+			
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				
+				close(pstmt);
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		
+		
+		
+		
+		return 0;
+	}
+
+public int updateMember2(Connection conn, String nickname, String tel, int memberNo) {
+		
+		int result = 0;
+		
+		String sql = "UPDATE MEMBER SET \r\n"
+				+ "MEMBER_NICKNAME = ? ,\r\n"
+				+ "MEMBER_TEL = ? \r\n"
+				+ "WHERE MEMBER_NO = ? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, nickname);
+			pstmt.setString(2, tel);
+			pstmt.setInt(3, memberNo);
+			
+			// executeUpdate() : DML
+			// executeQuery() : SELECT
+			result = pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+public int insertBoard(Connection conn, String title, String content, int memberNo) {
+	
+	int result = 0;
+		
+	String sql = "";
+	
+	
+	try {
+		
+	}catch(Exception e) {
+		e.printStackTrace();
+	}finally {
+		try {
+
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, title);
+		pstmt.setString(2, content);
+		pstmt.setInt(1, memberNo);
+		
+		
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	return result;
+}
+
+public Member login(Connection conn, String email, String pw) {
+		
+		// 1. 결과 저장용 변수 선언
+		Member member = null;
+		
+		// 2. SQL 작성
+		String sql = "SELECT MEMBER_NO, MEMBER_NICKNAME, MEMBER_TEL, MEMBER_ADDRESS,\r\n"
+				+ "	TO_CHAR(ENROLL_DATE, 'YYYY\"년\" MM\"월\" DD\"일\" HH24:MI:SS') ENROLL_DATE\r\n"
+				+ "FROM MEMBER\r\n"
+				+ "WHERE MEMBER_EMAIL = ? \r\n"
+				+ "AND MEMBER_PW = ? \r\n"
+				+ "AND MEMBER_DEL_FL = 'N'";
+		
+		try {
+			// 3. PreparedStatment 생성
+			pstmt = conn.prepareStatement(sql);
+			
+			// 4. ?에 값 대입
+			pstmt.setString(1, email);
+			pstmt.setString(2, pw);
+			
+			// 5. SQL(SELECT) 수행 후 결과(ResultSet) 반환 받기
+			// SELECT -> executeQuery
+			// DML    -> executeUpdate
+			rs = pstmt.executeQuery();
+			
+			// 6. ResultSet에 조회된 다음 행이 있는지 확인
+			// -> 아이디, 비밀번호가 일치하는 경우는 1행 밖에 없으므로
+			// while(조건식) 대신 if(조건식) 사용 가능
+			
+//			while(rs.next()) {
+			if(rs.next()) { // 결과가 있을 때 무조건 1행이면 if 사용 권고
+				
+				// 7. 조회 결과가 있을 경우 컬럼 값을 모두 얻어오기
+				int memberNo = rs.getInt("MEMBER_NO");
+				
+				String memberNickname = rs.getString("MEMBER_NICKNAME");
+				
+				String memberTel = rs.getString("MEMBER_TEL");
+				
+				String memberAddress = rs.getString("MEMBER_ADDRESS");
+				
+				String enrollDate = rs.getString("ENROLL_DATE");
+				
+				// + 매개 변수 email
+				
+				
+				// 8. Member 객체를 생성하여 얻어온 값을 모두 세팅
+				member = new Member(); 
+				// 결과 저장용 변수가 Member 객체를 참조
+				// == null 아님
+				
+				member.setMemberEmail(email);
+				member.setMemberNo(memberNo);
+				member.setMemberNickname(memberNickname);
+				member.setMemberTel(memberTel);
+				member.setMemberAdress(memberAddress);
+				member.setEnrollDate(enrollDate);
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 9. 사용한 JDBC 객체 반환(역순)
+			close(rs);
+			close(pstmt);
+		}
+		
+		// member == null -> 로그인 실패
+		// member != null -> 로그인 성공
+		return member;
+}
 
 }

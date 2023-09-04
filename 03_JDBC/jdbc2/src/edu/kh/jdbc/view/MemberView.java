@@ -10,6 +10,8 @@ public class MemberView {
 	
 	private Scanner sc = new Scanner(System.in);
 	private MemberService service = new MemberService();
+	
+	private Member loginMember = null;
 
 	/**
 	 * 메뉴 출력용 메서드
@@ -23,11 +25,15 @@ public class MemberView {
 				
 				System.out.println("\n---Member 테이블로 JDBC 연습하기---\n");
 				System.out.println("1. 회원 가입(INSERT)");
-				System.out.println("2. 회원 정보 수정(UPDATE)");
-				System.out.println("3. 회원 탈퇴(DELETE)");
-				System.out.println("4. 비밀번호 변경(UPDATE)");
-				System.out.println("5. 회원 가입 두번째 (INSERT)");
-				System.out.println("0. 종료");
+				System.out.println("2.	로그인");
+				System.out.println("3. 회원 정보 수정(UPDATE)");
+				System.out.println("4. 회원 탈퇴(DELETE)");
+				System.out.println("5. 비밀번호 변경(UPDATE)");
+				
+				System.out.println("6. 회원탈퇴(DELETE)");
+				System.out.println("7. 게시글작성");
+				
+				System.out.println("0.종료");
 				
 				System.out.print("메뉴선택>>");
 				
@@ -37,10 +43,13 @@ public class MemberView {
 				switch(input) {
 				
 				case 1 : insertMember();  break;
-				case 2 : updateMember();  break;
-				case 3 : deleteMember();  break;
-				case 4 : updatePw();  	  break;
-				case 5 : insertMember2();  break;
+				case 2 : login();  break;
+				case 3 : updateMember1();  break;
+				case 4 : deleteMember();  break;
+				case 5 : updatePw();  	  break;
+				case 6 : updateMember2(); break;
+				case 7 : insertBoard(); 	break;
+				
 				case 0 : System.out.println("\n프로그램 종료\n"); break;
 				default : System.out.println("\n메뉴에 작성된 번호만 입력하세요\n");
 				
@@ -97,7 +106,7 @@ public class MemberView {
 	}
 	
 	
-	private void updateMember() {
+	private void updateMember1() {
 		
 		//이메일, 비밀번호가 일치하는 회원의 
 		//닉네임, 전화번호, 주소를 수정
@@ -242,6 +251,108 @@ public class MemberView {
 		
 		
 	}
+	
+private void updateMember2() {
+		
+		// 로그인 여부 확인
+		if(loginMember == null) {
+			System.out.println("\n***** 로그인 후 이용해주세요 *****\n");
+			return;
+		}
+		
+		// 로그인 O 인 경우
+		
+		System.out.print("수정할 닉네임 : ");
+		String nickname = sc.next();
+		
+		System.out.print("수정할 전화번호(- 제외) : ");
+		String tel = sc.next();
+		
+		// 회원 정보 수정 서비스 호출 후 결과 반환 받기
+		// 수정할 닉네임, 전화번호, 회원번호(PK, 조건절에 사용)
+		int result = service.updateMember2(nickname, tel, loginMember.getMemberNo());
+		
+		if(result > 0) 	System.out.println("\n***** 수정 성공 *****\n");
+		else 			System.out.println("\n***** 수정 실패... *****\n");
+	}
+
+
+
+	private void insertBoard() {
+		
+		System.out.println("게시글작성");
+		
+		
+		if(loginMember ==null) {
+			
+			System.out.println("로그인 후 이용해주세요");
+			return;
+		}
+		
+		
+		System.out.println("제목 입력 :");
+		String title = sc.nextLine();
+		
+		System.out.println("내용 입력(입력 종류 : !wq)");
+		
+		String content = "";  //빈 문자열
+		
+		while(true) {
+			
+			
+			String temp = sc.nextLine(); //한줄 입
+			
+			if(temp.equals("!wq")) {  //입력 종료 커맨드인 경
+				
+				break;
+				
+				
+				}
+			
+			content += temp + "\n";
+			
+		}
+		
+		int result = service.insertBoard(title, content , loginMember.getMemberNo());
+		
+		if(result > 0) {
+			
+			System.out.println("게시글이 등록 되었습니다.");
+			
+			
+		}else {
+			System.out.println("게시글 등록 실패");
+			
+		}
+	
+	}
+	
+	private void login() {
+		System.out.println("\n***** 로그인 *****\n");
+		
+		System.out.print("이메일 : ");
+		String email = sc.next();
+		
+		System.out.print("비밀번호 : ");
+		String pw = sc.next();
+		
+		// 로그인 서비스 호출 후 결과(Member) 반환 받기
+		Member member = service.login(email, pw);
+		
+		// 로그인 결과에 따라 출력하기
+		if(member != null) {
+			System.out.println("\n로그인 성공!\n");
+			System.out.println(member);
+			
+			loginMember = member;
+		
+		} else {
+			System.out.println("\n***** 로그인 실패... 참 쉽죠? *****\n");
+		}
+	}
+
+
+
 	
 	
 

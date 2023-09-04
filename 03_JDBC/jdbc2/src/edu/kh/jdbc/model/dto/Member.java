@@ -55,6 +55,14 @@ public class Member {
 		
 	}
 	
+	public Member(String memberPw, int memberNo) {
+		this.memberPw = memberPw;
+		this.memberNo = memberNo;
+		
+	}
+	
+	
+	
 	
 	
 	

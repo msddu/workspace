@@ -148,4 +148,79 @@ public class MemberService {
 		return result;
 	}
 
+
+	public int updateDelFl(Member member) {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.updateDelFl(conn, member);
+		
+		
+		
+		
+		return 0;
+	}
+
+	public int updateMember2(String nickname, String tel, int memberNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.updateMember2(conn, nickname, tel, memberNo);
+		
+		if(result > 0)	commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
+	public int insertBoard(String title, String content, int memberNo) {
+		
+		
+		Connection conn = getConnection();
+		
+		int result = dao.insertBoard(conn, title, content, memberNo);
+		
+		
+		if(result > 0)  commit(conn);
+		else  			rollback(conn);
+		
+		
+		return 0;
+	}
+
+
+	/** 로그인
+	 * @param email
+	 * @param pw
+	 * @return
+	 */
+	public Member login(String email, String pw) {
+		
+		// 1. 커넥션 생성
+		Connection conn = getConnection();
+		
+		// 2. DAO 메서드 호출
+// 		Member member = dao.login(conn, email, pw); // PreparedStatement
+		
+ 		Member member = dao.login(conn, email, pw); // Statement
+		
+		// SELECT는 트랜잭션 제어 처리가 필요 없음 -> 건너 뜀
+		
+		// 3. 커넥션 반환
+		close(conn);
+		
+		// 4. view로 결과 반환
+		return member;
+
+	}
+
+	
+	
+	
+	
+	
+
 }
