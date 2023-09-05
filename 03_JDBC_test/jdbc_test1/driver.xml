@@ -5,9 +5,9 @@
 	
 	<entry key="url">jdbc:oracle:thin:@115.90.212.20:10000:ORCL</entry>
 	
-	<entry key="user">a230724_kms_su</entry>
+	<entry key="user">a230724_test</entry>
 	
-	<entry key="pw">kms0909</entry>
+	<entry key="pw">test1234</entry>
 	
 </properties>
 

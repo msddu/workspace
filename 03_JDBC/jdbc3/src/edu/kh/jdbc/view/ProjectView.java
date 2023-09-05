@@ -1,9 +1,11 @@
 package edu.kh.jdbc.view;
 
+import java.nio.channels.ScatteringByteChannel;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import edu.kh.jdbc.model.dto.Board;
 import edu.kh.jdbc.model.dto.Member;
 import edu.kh.jdbc.model.service.ProjectService;
 
@@ -35,10 +37,55 @@ public class ProjectView {
 				System.out.println("5. MEMBER 테이블 전체 조회");
 				System.out.println("6. 게시글 작성하기"); // BOARD 테이블에 INSERT
 				
+				
+				
 				// 게시글 번호, 제목, 작성일, 조회수, 작성자번호, 작성자 닉네임
 				// 게시글 번호 내림차순으로 조회
 				// 단, 삭제되지 않은 글만 조회(BOARD_DEL_FL = 'N')
 				System.out.println("7. 게시글 목록 조회"); // selectBoardList()
+				
+				
+				
+				
+				
+	            // ------------------ 게시글 상세 조회(selectBoard) ------------------
+	            // 게시글 번호를 입력 받아 일치하는 게시글의
+	            // 제목, 내용, 작성일, 조회수, 작성자번호, 작성자 닉네임 조회
+	            // 단, 삭제되지 않은 게시글만 조회 가능(BOARD_DEL_FL = 'N')
+	            
+	            // view 메서드 1개 - service 메서드 1개 -  dao 메서드 2개
+	            // service에서 dao의 메서드를 연달아 호출
+	            // 1) 게시글 상세조회(selectBoard(게시글번호)) 를 먼저 수행
+	            // 2) 게시글 상세 조회 결과가 있을 경우 -> 조회수 증가(incrementReadCount(게시글 번호)) 수행
+	            System.out.println("8. 게시글 상세조회"); 
+	            
+	            
+	            // ------------------ 게시글 삭제(deleteBoard) ------------------
+	            // 1) 로그인 여부 확인
+	            
+	            // 2) 로그인 상태인 경우 게시글 번호를 입력 받아
+	            // 해당 게시글 작성 회원 번호(BOARD.MEMBER_NO)와 
+	            // 로그인한 회원의 회원 번호(MEMBER.MEMBER_NO)가 일치하는지 확인하는 service 메서드 호출
+	            
+	            // 3) 일치할 경우
+	            // 정말 삭제하시겠습니까?(Y/N)을 출력 
+	            // -> Y 입력 시 BOARD_DEL_FL 컬럼 값을 'Y'로 수정하는 service 메서드 호출
+	            System.out.println("9. 게시글 삭제");
+	            
+	            
+	            
+	            
+	            // ------------------ 게시글 수정(updateBoard)  ------------------
+	            // 1) 로그인 여부 확인
+	            
+	            // 2) 로그인 상태인 경우 게시글 번호를 입력 받아
+	            // 해당 게시글 작성 회원 번호(BOARD.MEMBER_NO)와 
+	            // 로그인한 회원의 회원 번호(MEMBER.MEMBER_NO)가 일치하는지 확인하는 service 메서드 호출
+	            
+	            // 3) 일치할 경우
+	            // 수정할 제목, 내용을 입력 받아 해당 게시글의 제목, 내용을 수정
+	            System.out.println("10. 게시글 수정");
+
 				
 				
 				System.out.println("0. 프로그램 종료");
@@ -54,7 +101,11 @@ public class ProjectView {
 				case 4 : updateDelFl(); break;
 				case 5 : selectAllMember();
 				
-				case 6 : insertBoard(); break;
+				case 6 : insertBoard();		 break;
+				case 7 : selectBoardList(); break;
+				case 8 : selectBoard(); break;
+				case 9 : deleteBoard(); break;
+				
 				
 				case 0 : System.out.println("\n--- 프로그램 종료 ---\n");break;
 				default : System.out.println("\n*** 메뉴 번호만 입력해주세요 ***\n");
@@ -266,9 +317,148 @@ public class ProjectView {
 		
 	}
 	
-	  
+	
+	// 게시글 번호, 제목, 작성일, 조회수, 작성자번호, 작성자 닉네임
+	// 게시글 번호 내림차순으로 조회
+	// 단, 삭제되지 않은 글만 조회(BOARD_DEL_FL = 'N')
+	
+	/**
+	 * 게시글 목록 조회
+	 */
+	private void selectBoardList() {
+		
+		System.out.println("\n*****게시글 목록 조회*****\n");
+		
+	
+		List<Board> boardlist = service.selectBoardList();
+		
+		
+		if(boardlist.size() == 0) {
+
+			System.out.println("\n  조회 결과가 없습니다  \n");
+			
+		} else {
+			
+			for(Board board : boardlist) {
+				System.out.println(board);
+			}
+	
+	}
+		
+	}
+	
+	/**
+	 * 게시글 상세조회
+	 */
+	private void selectBoard() {
+		System.out.println("\n*****게시글 상세조회*****\n");
+		
+		System.out.print("게시글 번호 입력: ");
+		int boardNo = sc.nextInt();
+		
+		
+		Board board = service.selectBoard(boardNo);
+		
+		//조회결과 x
+		if(board == null) {
+			
+			System.out.println("게시글이 존재하지 않습니다");
+			return;
+			
+		}//조회결과o
+		
+	    System.out.printf("[%d] %s \n", 
+	               board.getBoardNo(), board.getBoardTitle());
+	      
+	      System.out.println("작성일 : " + board.getBoardCreateDate());
+	      System.out.println("조회수 : " + board.getReadCount());
+	      
+	      System.out.printf("작성자 : %s (%d) \n",
+	            board.getMemberNickname(), board.getMemberNo());
+	      
+	      System.out.println("---------------------------------------");
+	      
+	      System.out.println(board.getBoardContent());
+	      
+}
+	
+	
+	
+	
+	
+	  // ------------------ 게시글 삭제(deleteBoard) ------------------
+    // 1) 로그인 여부 확인
+    
+    // 2) 로그인 상태인 경우 게시글 번호를 입력 받아
+    // 해당 게시글 작성 회원 번호(BOARD.MEMBER_NO)와 
+    // 로그인한 회원의 회원 번호(MEMBER.MEMBER_NO)가 일치하는지 확인하는 service 메서드 호출
+    
+    // 3) 일치할 경우
+    // 정말 삭제하시겠습니까?(Y/N)을 출력 
+    // -> Y 입력 시 BOARD_DEL_FL 컬럼 값을 'Y'로 수정하는 service 메서드 호출
+	
+	
+	
+	/**
+	 * 작성자 확인
+	 */
+	private int writerCheck() {
+		System.out.print("게시글 번호 입력 : ");
+		int boardNo = sc.nextInt();
+		sc.nextLine(); // 입력 버퍼에 남아있는 개행 문자 제거
+
+		int result = service.writerCheck(boardNo, loginMember.getMemberNo());
+
+		if(result > 0) 	return boardNo;
+		else			return 0;
+	}
+	
+	/**
+	 * 게시글 삭제
+	 */
+	private void deleteBoard() {
+		System.out.println("\n***** 게시글 삭제 *****\n");
+
+		// 1) 로그인 여부 확인
+		if(loginMember == null) {
+			System.out.println("\n***** 로그인 후 이용해주세요 *****\n");
+			return;
+		}
+
+		// 2) 로그인 상태인 경우 게시글 번호를 입력 받아
+        // 해당 게시글 작성 회원 번호(BOARD.MEMBER_NO)와 
+        // 로그인한 회원의 회원 번호(MEMBER.MEMBER_NO)가 일치하는지 확인하는 service 메서드 호출
+		int boardNo = writerCheck();
+
+		// 3) 일치할 경우
+        // 정말 삭제하시겠습니까?(Y/N)을 출력 
+        // -> Y 입력 시 BOARD_DEL_FL 컬럼 값을 'Y'로 수정하는 service 메서드 호출
+
+		if(boardNo == 0) { // 로그인한 회원의 글이 아니면 
+			System.out.println("\n----- 로그인한 회원의 글만 삭제할 수 있습니다 -----\n");
+			return; 
+		}
+
+		System.out.print("정말 삭제하시겠습니까(Y/N) ? ");
+		char ch = sc.next().toUpperCase().charAt(0); // 입력된 문자열을 대문자로 변경한 후 0번 인덱스 문자를 반환
+
+		if(ch == 'N') { // N을 입력한 경우
+			System.out.println("\n----- 삭제 취소 -----\n");
+			return;
+		}
+
+		// 삭제 서비스 호출
+		int result = service.deleteBoard(boardNo);
+
+		String str = null;
+		if(result > 0) 	str = "삭제 되었습니다";
+		else			str = "삭제 실패";
+
+		System.out.printf("\n***** %s *****\n\n", str);
+
+
 	
 	
 }
 
-
+}

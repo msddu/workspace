@@ -58,6 +58,66 @@ WHERE MEMBER_EMAIL = 'alstn25000@naver.com' AND MEMBER_PW = 'SDFDSAF';
 
 
 
+--	            // ------------------ 게시글 상세 조회(selectBoard) ------------------
+--	            // 게시글 번호를 입력 받아 일치하는 게시글의
+--	            // 제목, 내용, 작성일, 조회수, 작성자번호, 작성자 닉네임 조회
+--	            // 단, 삭제되지 않은 게시글만 조회 가능(BOARD_DEL_FL = 'N')
+--	            
+--	            // view 메서드 1개 - service 메서드 1개 -  dao 메서드 2개
+--	            // service에서 dao의 메서드를 연달아 호출
+--	            // 1) 게시글 상세조회(selectBoard(게시글번호)) 를 먼저 수행
+--	            // 2) 게시글 상세 조회 결과가 있을 경우 -> 조회수 증가(incrementReadCount(게시글 번호)) 수행
+
+
+SELECT BOARD_TITLE, BOARD_CONTENT, 
+   TO_CHAR(B_CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') B_CREATE_DATE,
+   READ_COUNT, MEMBER_NO, MEMBER_NICKNAME
+FROM BOARD
+JOIN MEMBER USING(MEMBER_NO)
+WHERE BOARD_DEL_FL = 'N'
+AND BOARD_NO = 1;
+
+
+
+
+
+UPDATE BOARD SET 
+READ_COUNT = READ_COUNT+1
+WHERE BOARD_NO  = 1	;
+
+ROLLBACK;
+
+
+
+SELECT * FROM BOARD;
+
+
+
+
+SELECT COUNT(*) CHK FROM BOARD
+WHERE BOARD_NO = 2
+AND MEMBER_NO = 5;
+
+
+
+UPDATE BOARD SET 
+BOARD_DEL_FL  = 'Y';
+
+
+SELECT * FROM BOARD;
+
+
+
+
+SELECT BOARD_NO , BOARD_TITLE,  B_CREATE_DATE , READ_COUNT , MEMBER_NO , MEMBER_NICKNAME
+FROM BOARD 
+JOIN MEMBER USING (MEMBER_NO)
+WHERE BOARD_DEL_FL = 'N'
+ORDER BY BOARD_NO DESC;
+
+
+
+
 
 
 

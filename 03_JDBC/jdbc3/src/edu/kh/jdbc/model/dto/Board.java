@@ -23,6 +23,17 @@ public class Board {
 		this.memberNo = memberNo;
 		this.memberNickname = memberNickname;
 	}
+	
+	public Board(int boardNo, String boardTitle, String boardCreateDate, int readCount, String memberNickname) {
+		
+		this.boardNo  = boardNo;
+		this.boardTitle = boardTitle;
+		this.boardCreateDate = boardCreateDate;
+		this.readCount = readCount;
+		this.memberNickname = memberNickname;
+		
+		
+	}
 
 	public int getBoardNo() {
 		return boardNo;

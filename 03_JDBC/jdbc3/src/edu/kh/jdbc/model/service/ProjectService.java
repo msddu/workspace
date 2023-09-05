@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import edu.kh.jdbc.model.dao.ProjectDAO;
+import edu.kh.jdbc.model.dto.Board;
 import edu.kh.jdbc.model.dto.Member;
 
 public class ProjectService {
@@ -143,13 +144,122 @@ public class ProjectService {
 		
 		return result;
 	}
+
+
+
+	/** 게시글 상세조회
+	 * @param boardNo
+	 * @return
+	 */
+	public Board selectBoard(int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		Board board = dao.selectBoard(conn,boardNo);
+		
+		
+		
+		
+		if(board != null ) {
+			int result = dao.incrementReadCount(conn,boardNo);
+			
+			if(result > 0) {  
+				
+				commit(conn);
+				
+				//db와 데이터 동기화
+				//db에서만 저회수가 1 증가하기 때문에
+				//조회해둔 board에도 조회수 1을 증가시킨다.
+				board.setReadCount(board.getReadCount() +1 );
+										
+			} else			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return board;
+	}
+
+
+
+
+
+
+
+	public int updateBoard(String input) {
+		
+		
+		Connection conn = getConnection();
+		
+		
+		int result2 = dao.updateBoard(conn,input);
+		
+		
+		if(result2 > 0)   commit(conn);
+		else  			   rollback(conn);
+		
+		close(conn);
+		
+		return result2;
+		
+		
+		
+	}
+
+
+
+	/**게시글 목록 조회
+	 * @return
+	 */
+	public List<Board> selectBoardList() {
+		
+		Connection conn = getConnection(); 
+		
+		List<Board> boardlist = dao.selectBoardList(conn);
+		
+		close(conn); 
+		
+		return boardlist; 
+		
+		
 	
-	
-	
-	
-	
-	
-	
-	
+	}
+
+
+
+	/**작성자 확인
+	 * @param boardNo
+	 * @param memberNo
+	 * @return
+	 */
+	public int writerCheck(int boardNo, int memberNo) {
+		Connection conn = getConnection();
+		int check = dao.writerCheck(conn, boardNo, memberNo);
+		close(conn);
+		return check;
+	}
+
+
+
+	/**게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	public int deleteBoard(int boardNo) {
+		Connection conn = getConnection();
+		int result = dao.deleteBoard(conn, boardNo);
+
+		if(result > 0)	commit(conn);
+		else 			rollback(conn);
+
+		close(conn);
+		return result;
+	}
+
+
+
+
+
+
 	
 }
