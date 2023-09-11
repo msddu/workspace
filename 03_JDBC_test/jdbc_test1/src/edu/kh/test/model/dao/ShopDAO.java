@@ -23,14 +23,14 @@ public class ShopDAO {
 			String sql = "SELECT * FROM SHOP_MEMBER WHERE MEMBER_ID = ?";
 			pstmt = conn.prepareStatement(sql);
 			
-			
-			
+			pstmt.setString(1,memberId);
+			rs = pstmt.executeQuery();
 			
 			if(rs.next())	{
 				String id = rs.getString("MEMBER_ID");
 				String pw = rs.getString("MEMBER_pw");
 				String phone = rs.getString("PHONE");
-				String gender = rs.getString("성별");
+				String gender = rs.getString("GENDER");
 				
 				sm = new ShopMember(id, pw, phone, gender);
 				 
@@ -41,14 +41,9 @@ public class ShopDAO {
 			e.printStackTrace();
 			
 		}finally {
+			close(rs);
+			close(pstmt);
 			
-			try {
-				close(rs);
-				close(pstmt);
-				
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
 		}
 		
 		
