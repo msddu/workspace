@@ -126,33 +126,9 @@
 /* -------------------------------------------------------------------------------- */
 
 
-.container-5{
-  width: 500px;
-  height: 500px;
-  border: 3px solid black;
-}
-
-
-.container-5>div{display: inline-block;}
-
-.container-5>#con1{
-  
-  width: 50%;
-  height: 50%;
-  background-color: red;
-}
-
-.container-5>#con2{
-  
-  width: 50%;
-  height: 50%;
-  background-color: blue;
-}
 
 
 
-
-/*------------------------------------------------ */
 
 .container-6{
   border: 3px solid black;
@@ -177,5 +153,21 @@
 .col6-1{background-color: yellow;}
 .col6-2{background-color: orange;}
 
+
+/* display : none 확인하기 */
+.div-7{
+  border: 1px solid black;
+  height: 50px;
+  background-color: silver;
+
+}
+
+#div-7-2{
+  display: none;
+}
+
+#div-7-4{
+  visibility: hidden;
+}
 
 
