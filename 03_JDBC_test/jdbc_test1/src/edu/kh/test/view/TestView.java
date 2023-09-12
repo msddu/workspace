@@ -15,7 +15,7 @@ public class TestView {
 		System.out.print("ID 입력 : ");
 		String memberId = sc.next();
 		
-		ShopMember sm = service.selectMember(memberId);
+	
 		
 		
 		
