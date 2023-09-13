@@ -174,7 +174,10 @@ a{
 /* -----------------------------------------content3---------------------------------------- */
 
 
+.cnt3list{
+  margin: 0 auto;
 
+}
 
 .test1{
   width: 100vw;
@@ -185,7 +188,7 @@ a{
 
 
 .test1-1{
-  width: 550px;
+  width: 400px;
   height: 100%;
   float: left;
   margin-left: 3%;
@@ -218,7 +221,7 @@ a{
 
 .test1-2{
   position: relative;
-  width: 550px;
+  width: 400px;
   height: 100%;
   float: left;
   margin-left: 3%;
@@ -244,7 +247,7 @@ a{
 
 .test1-3{
   position: relative;
-  width: 550px;
+  width: 400px;
   height: 100%;
   float: left;
   margin-left: 3%;
@@ -273,6 +276,11 @@ a{
 
 
 /* -----------------------------------------content4---------------------------------------- */
+
+.cnt4list{
+  margin: 0 auto;
+}
+
 
 .test2{
   width: 100vw;
@@ -312,8 +320,6 @@ a{
   background: linear-gradient(rgb(116, 228, 243), rgb(185, 230, 236));
   margin-top: 20;
   position: relative;
-  
-  
 }
 
 .test2-2-1{
