@@ -7,7 +7,7 @@
 
   /* flex-direction : 중심축방향 + 시작/끝 */
    /* 기본값 */
-     flex-direction: row;  
+    flex-direction: row;  
    /* flex-direction: row-reverse; */
    /* flex-direction: column-reverse; */
 
@@ -37,7 +37,7 @@
    align-items: flex-end;
    align-items: center; */
 
-   align-items: baseline;
+   /* align-items: baseline; */
 
 
 
