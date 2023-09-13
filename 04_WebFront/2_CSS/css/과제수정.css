@@ -174,10 +174,15 @@ a{
 /* -----------------------------------------content3---------------------------------------- */
 
 
+
+
 .test1{
   width: 100vw;
   height: 400px;
- }
+}
+
+
+
 
 .test1-1{
   width: 550px;
@@ -194,6 +199,7 @@ a{
   padding-left: 30px;
   font-size: 25px;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
   
   
 }
@@ -212,6 +218,10 @@ a{
 
 .test1-2{
   position: relative;
+  width: 550px;
+  height: 100%;
+  float: left;
+  margin-left: 3%;
 }
 
 .test1-2 > div{
@@ -228,12 +238,16 @@ a{
   font-size: 15px;
   padding-top: 8px;
   
- 
+
 }
 
 
 .test1-3{
   position: relative;
+  width: 550px;
+  height: 100%;
+  float: left;
+  margin-left: 3%;
 }
 
 
@@ -247,21 +261,8 @@ a{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
-.test1-2{
-  width: 550px;
-  height: 100%;
-  float: left;
-  margin-left: 3%;
 
-}
 
-.test1-3{
-  width: 550px;
-  height: 100%;
-  float: left;
-  margin-left: 3%;
-  
-}
 
 .light{
   font-size: 15px;
@@ -271,11 +272,6 @@ a{
 
 
 
-.test1-1>div{
-  font-weight: bold;
-
-}
-
 /* -----------------------------------------content4---------------------------------------- */
 
 .test2{
@@ -284,7 +280,7 @@ a{
   margin-top: 20px;
   
   
- }
+}
 
 .test2-1{
   width: 1160px;
@@ -324,7 +320,7 @@ a{
   position: absolute;
   margin-top: 20px;
   left: 30px;
- 
+
 }
 
 .cre{
@@ -344,6 +340,14 @@ a{
   position: relative;
 }
 
+
+.test3{
+  width: 100vw;
+  height: 400px;
+  margin-top: 20px;
+  background: linear-gradient(rgb(175, 72, 223), rgb(204, 169, 238));
+}
+
 .text{
   position: absolute;
   top: 90px;
@@ -351,48 +355,40 @@ a{
 }
 
 
-.test3{
-  width: 100vw;
-  height: 400px;
-  margin-top: 20px;
-  background: linear-gradient(rgb(175, 72, 223), rgb(204, 169, 238));
- }
-
- .text1{
+.text1{
   font-weight: bold;
   font-size: 30px;
   font-family:sans-serif
- }
+}
 
- .text2{
+.text2{
   font-weight: bold;
   font-size: 30px;
- }
+}
 
- .text3{
+.text3{
   font-weight: bold;
   font-size: 30px;
- }
- .text4{
- 
+}
+.text4{
+
   font-size: 15px;
   margin-top: 10px;
- }
- .text5{
- 
+}
+.text5{
+
   font-size: 15px;
- }
+}
 
 
 
  /* -----------------------------------------content6---------------------------------------- */
-
- .test4{
+.test4{
   width: 100vw;
   height: 400px;
   margin-top: 20px;
   
- }
+}
 
 .test4-1{
   width: 550px;
@@ -471,12 +467,6 @@ a{
   height: 100%;
   float: left;
 }
-.foot3{
-  width: 15%;
-  height: 100%;
-  float: left;
-}
-
 
 .foot2-1{
   width: 20%;
@@ -484,6 +474,13 @@ a{
   float: left;
 
 }
+.foot3{
+  width: 15%;
+  height: 100%;
+  float: left;
+}
+
+
 
 
 
