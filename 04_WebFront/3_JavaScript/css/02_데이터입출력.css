@@ -1,0 +1,35 @@
+.box{
+  width: 500px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+
+*{box-sizing: border-box;}
+
+
+.box2{
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  border: 2px solid red;
+}
+
+.container2{
+  width: 520px;
+  height: 300px;
+  border: 1px solid black;
+
+  display: flex;
+  flex-wrap: wrap;  /* 크기가 화면을 넘어가면 밑으로 내리면서..*/
+  align-content: flex-start;  /* 교차축 방향으로 달라붙음 */
+
+  /* 자식요소가 부모요소를 초과했을 때에 대한 설정 */
+  overflow: auto; /* auto : 자식이 부모를 넘기기전엔 변화가 없다가 
+                            넘어가는 순간 스크롤이 생성 */
+
+/*   overflow: hidden; /* auto : 자식이 부모를 넘기기전엔 변화가 없다가 
+                            넘어가는 순간 자식요소를 숨김 */                         
+
+}
+
