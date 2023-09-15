@@ -6,7 +6,7 @@ const test2 = document.getElementById("test2");
 
 //innerText로 읽어오기
 function getBoxText(){
-  // console.log :  내용을 개발자 도구 consle에 출력해라
+  // console.log : 내용을 개발자 도구 consle에 출력해라
 
   // test1.innerText : test1 요소에 작성된 내용을 얻어와라
   console.log(test1.innerText)
