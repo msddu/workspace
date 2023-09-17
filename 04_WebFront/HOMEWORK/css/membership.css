@@ -1,0 +1,118 @@
+*{
+    box-sizing: border-box; 
+    padding: 0;
+    margin: 0;
+}
+
+
+
+/* ------------------------------회원정보 입력 문구 ----------------------------------*/
+
+.memberText{
+    font-size: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+
+
+/* ---------------------------------회원정보 입력 ----------------------------------- */
+main{
+    width: 300px;   
+    /* border: 1px solid red; */
+    margin:  auto;
+    
+}
+
+
+li{
+    border: 1px solid rgb(190, 190, 190);
+    list-style: none; 
+    margin-bottom: 10px;
+
+}
+
+
+
+.main_input{
+    width: 100%;
+    height: 40px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+
+
+/* ----------------------------------체크박스----------------------------------------- */
+
+footer{
+    width: 300px;
+    height: 350px;
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    
+}
+
+.foot1{
+    width: 300px;
+    height: 15%;
+    /* border: 1px solid black; */
+    flex-direction: column;
+
+}
+
+label{
+    font-weight: bold;
+    font-size: 10px;
+    padding-left: 10px;
+    
+}
+
+.checkBtn{
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.choose{
+    margin-left: 25px;
+}
+
+p{
+    font-size: 8px;
+    padding-left: 20px;
+}
+
+.foot2{
+    width: 300px;
+    height: 60%;
+    border: 1px solid rgb(190, 190, 190);
+    margin-top: 10px;
+    
+}
+
+.foot3{
+    width: 300px;
+    height: 25%;
+    /* border: 1px solid black; */
+}
+
+.memberBtn{ 
+    background-color: rgb(33, 91, 238);
+    width: 100%;
+    height: 40px;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
