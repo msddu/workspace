@@ -1,0 +1,30 @@
+*all{
+    box-sizing: border-box;
+    padding: o;
+    margin: 0;
+
+}
+
+.all{
+    width: 1000px;
+    margin: auto;
+    border:  1px solid black;
+}
+
+
+.block1{
+    width: 90%;
+    margin: 10px auto;
+    display: flex;  
+    border: 1px solid black;
+
+    
+}
+
+.block2{
+    width: 80%;
+    height: 20%;
+    margin: auto;
+    border: 1px solid black;
+
+}
