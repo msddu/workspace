@@ -13,7 +13,7 @@
   /* 기본값 */
   /* flex-wrap: nowrap; */ /* 한 줄로 배치 */
 
-  flex-wrap : wrap; /* 여러 줄 로 배치 */
+  flex-wrap : wrap; /* 여러 줄 로 배치 */   
 
   /* flex-wrap : wrap-reverse; */
 
