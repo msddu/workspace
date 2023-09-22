@@ -115,11 +115,11 @@ inputName.addEventListener("keyup",()=>{
   inputName.value = value; //좌우 공백이 제거된 값을 대입
 
   if(value.length == 0){ //입력x
-     nameResult.innerText = "한글 2~15사이 입력";
+    nameResult.innerText = "한글 2~15사이 입력";
 
-     nameResult.classList.remove("check");
-     nameResult.classList.remove("error");
-     return;
+    nameResult.classList.remove("check");
+    nameResult.classList.remove("error");
+    return;
   }
 
   //정규식 이용해서검사
