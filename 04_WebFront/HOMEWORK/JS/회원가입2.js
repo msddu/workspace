@@ -65,6 +65,10 @@ inputId.addEventListener("keyup",()=>{
 });
 
 
+const inputPw = document.querySelector("#input-name");
+
+
+
 
 
 

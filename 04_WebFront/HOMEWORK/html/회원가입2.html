@@ -4,23 +4,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title><link rel="stylesheet" href="../css/회원가입2.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/회원가입2.css">
 </head>
 <body>
     
-    <input type="text" id="input-name"><br>
-    <span id="name-result">이름 입력</span>
+
+    <form action="#" name="signupForm">
+        <tbody>
+            <table>
+                <tr>
+                    <td>아이디 : </td>
+                    <td>
+                        <input type="text" id="input-id"><br>
+                        <span class="input-result">영어,숫자,!@#$%^&* 8~20글자 사이</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호 : </td>
+                    <td>
+                        <input type="password" id="input-pw"><br>
+                        <span class="input-result">비밀번호를 먼저 입력 해주세요</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호 확인 : </td>
+                    <td>
+                        <input type="password" id="input-pw-check"><br>
+                        <span class="input-result">한글 2~15(단자음, 단모음 제외)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>이름 : </td>
+                    <td>
+                        <input type="text" id="input-name"><br>
+                        <span class="input-result">한글 2~15(단자음, 단모음 제외)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>성별 : </td>
+                    <td>
+                        <label for="">
+                            남<input type="radio" name="gender" value="M">
+                        </label>
+                        <label for="">
+                            여<input type="radio" name="gender" value="W">
+                        </label>
+                    </td>
+                </tr>
+            </table>
+        </tbody>
+        <tfoot>
+        <tr>
+            <th colspan="2">
+                <button type="submit">회원가입</button>
+            </th>
+        </tr>
+
+        </tfoot>
+
+    </form>
 
 
-    <hr>
 
-
-    <input type="text" id="input-id"><br>
-    <span id="id-result">아이디 입력</span>
 
 
 
     
-    <script src="../JS/회원가입2.js"></script>
+    <script src="../JS/회원가입2.1.js"></script>
 </body>
 </html>
