@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSPProject2</title>
+</head>
+<body>
+
+  <ol>
+    <li>
+      <a href="/el">EL(Expression Language)</a>
+    </li>
+
+    <li>
+      <a href="/scope">Servlet / JSP 내장 객체와 범위</a>
+    </li>
+  </ol>
+
+
+  <hr>
+  
+
+<h1>Servlet/JSP복습</h1>
+<form action="/review" method="GET">
+<ul>
+  <li>from 태그: 서버 내부에 작성된 input값들을 제출하는 태그</li>
+  <li>action: 서버 주소 (제출하려는 주소)</li>
+  <li>method 태그: 데이터 전달 방법(GET/POST)을 지정하는 속성</li>
+</ul>
+
+<hr>
+
+이름 : <input type="text" name="inputName"> <br>
+나이: <input type="number" name="inputAge"> <br>
+성별: 
+<label>
+  남<input type="radio" name="gender" value="M">
+</label>
+<label>
+  여<input type="radio" name="gender" value="F">
+</label>
+
+<br>
+
+취미: 
+<label>
+  게임<input type="checkbox" name="hobby" value="게임">
+</label>
+<label>
+  영화<input type="checkbox" name="hobby" value="영화">
+</label>
+<label>
+  운동<input type="checkbox" name="hobby" value="운동">
+</label>
+<label>
+  코딩<input type="checkbox" name="hobby" value="코딩">
+</label>
+
+
+<br>
+
+<button type="submit">제출하기</button>
+
+  
+
+</form>
+
+
+
+
+</body>
+</html>
