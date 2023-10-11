@@ -123,8 +123,7 @@ public class MemberController {
 		
 		System.out.println(member);
 		
-		System.out.println(member.getMemberEmail());
-		System.out.println(member.getMemberPw());
+		
 
 		
 		return null;
