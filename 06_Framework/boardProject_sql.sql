@@ -73,6 +73,14 @@ AND MEMBER_PW  = 'pass01';
 
 
 
+--샘플 회원 비밀번호 변경(암호화 적용)
+UPDATE "MEMBER" SET 
+MEMBER_PW = '$2a$10$5fCyQPT3fx3x5.62OcUhE.3m//N/eOZznlKswau/tbQ70u.1NW.tG'
+WHERE MEMBER_NO = 1;
+
+COMMIT;
+
+
 
 
 

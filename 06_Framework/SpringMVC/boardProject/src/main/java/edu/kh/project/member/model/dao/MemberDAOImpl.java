@@ -28,4 +28,11 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		return sqlSession.selectOne("memberMapper.login",inputMember);
 	}
+	
+	
+	@Override
+	public int signup(Member inputMember) {
+		
+		return 0;
+	}
 }

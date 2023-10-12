@@ -140,6 +140,7 @@ public class MemberController {
 	 * </p>
 	 * @param inputMember : 이메일, 비밀번호 저장 커맨드 객체
 	 * @param model : 데이터 전달용 객체
+	 * @parm ra : 리다이렉트 시 데이터를 request scope로 전달하는 객체
 	 * @return
 	 */
 	@PostMapping("login")
@@ -211,6 +212,33 @@ public class MemberController {
 		status.setComplete();
 		
 		return "redirect:/";
+	}
+	
+	
+	/**회원가입 화면 전환
+	 * @return
+	 */
+	@GetMapping("signup")
+	public String signup() {
+		
+		// /WEB-INF/views/member/signup.jsp로 forward
+		return "member/signup";
+	}
+	
+	/** 회원 가입
+	 * @return
+	 */
+	@PostMapping("signup")
+	public String signup(Member inputMember,
+			@RequestParam("memberAddress")String[] memberAddress) {
+			
+			//memberAddress : 주소 3개가 저장된 배열
+			
+			//회원가입 서비스 호출 후 결과(INSERT 행의 개수)반환 받기
+			int result = service.signup(inputMember,memberAddress);
+		
+		return "redirect:/";
+		
 	}
 	
 	
