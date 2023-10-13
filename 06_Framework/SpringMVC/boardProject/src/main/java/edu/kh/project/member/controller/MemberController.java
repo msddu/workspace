@@ -225,22 +225,45 @@ public class MemberController {
 		return "member/signup";
 	}
 	
-	/** 회원 가입
+	/** 회원 가입 진행
 	 * @return
 	 */
 	@PostMapping("signup")
-	public String signup(Member inputMember,
-			@RequestParam("memberAddress")String[] memberAddress) {
-			
-			//memberAddress : 주소 3개가 저장된 배열
-			
-			//회원가입 서비스 호출 후 결과(INSERT 행의 개수)반환 받기
-			int result = service.signup(inputMember,memberAddress);
+	public String signup(Member inputMember, 
+						@RequestParam("memberAddress") String[] memberAddress,
+						RedirectAttributes ra) {
 		
-		return "redirect:/";
+		// RedirectAttributes : 리다이렉트 시 값을 1회성으로 전달하는 객체
+		
+		// memberAddress : 주소 3개가 저장된 배열
+		
+		// 회원 가입 서비스 호출 후 결과(INSERT 행의 개수) 반환 받기
+		int result = service.signup(inputMember, memberAddress);
+		
+		// service 호출 결과
+		// 1) 1 == INSERT 성공
+		// 2) 0 == INSERT 실패
+		// 3) 예외 발생 
+		
+		
+		// 회원 가입 성공 시
+		if(result > 0) {
+			// 메인 페이지로 리다이렉트 후
+			// "회원 가입 성공" alert() 출력
+			ra.addFlashAttribute("message", "회원 가입 성공");
+			return "redirect:/";
+		}
+		
+		
+		// 회원 가입 실패 시
+		// 회원 가입 페이지로 리다이렉트 후
+		// "가입 실패" alert() 출력
+		ra.addFlashAttribute("message", "가입 실패...");
+		return "redirect:/member/signup";
+		
+		// 참조 : 리다이렉트는 GET 방식 요청이다!
 		
 	}
-	
 	
 	
 	

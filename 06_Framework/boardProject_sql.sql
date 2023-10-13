@@ -81,7 +81,36 @@ WHERE MEMBER_NO = 1;
 COMMIT;
 
 
+UPDATE "MEMBER" SET
+MEMBER_NICKNAME = 'TEST', MEMBER_TEL = '01012345678' , MEMBER_ADDRESS = 'AAA^^^BBB^^^cCC'
+WHERE MEMBER_NO = 1;
 
+
+
+ROLLBACK;
+
+
+SELECT * FROM MEMBER;
+
+
+--BCrypt 암호화 시 비밀번호를 조회한 후 
+--matches() 메서드를 이용해서 비교
+
+--로그인한 회원의 암호화된 비밀번호 조회
+ SELECT MEMBER_PW 
+ FROM "MEMBER" 
+ WHERE MEMBER_NO = 회원번호;
+
+--비밀번호 변경
+UPDATE "MEMBER" SET 
+MEMBER_PW  = '변경된 비밀번호'
+WHERE MEMBER_NO = '회원번호';
+
+
+--회원 탈퇴
+UPDATE "MEMBER" SET 
+MEMBER_DEL_FL ='Y'
+WHERE MEMBER_NO = 2;
 
 
 

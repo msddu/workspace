@@ -25,7 +25,7 @@ import lombok.ToString;
 @ToString //toString 자동완성
 public class Member {
 	
-	private int memberNO;
+	private int memberNo;
 	private String memberEmail;
 	private String memberPw;
 	private String memberNickname;

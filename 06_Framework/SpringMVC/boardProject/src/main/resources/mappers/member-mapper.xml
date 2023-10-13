@@ -57,4 +57,26 @@
 		
 	</select>
 	
+	
+		<!-- 
+		*** insert, update, delete 태그에서 사용 가능한 속성 ***
+	
+		- parameterType : 전달된 파라미터의 타입
+		
+		( resultType이 존재하지 않는다!!! )
+		 -> 반환형이 int 고정이기 때문에 작성하지 않음
+	 -->
+	
+	
+	<!-- 회원 가입 -->
+	<!-- parameterType="Member" : mybatis-config.xml에 등록된 별칭 사용 -->
+	<insert id="signup"  parameterType="Member" >
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL, #{memberEmail}, #{memberPw},
+			#{memberNickname}, #{memberTel}, 
+			#{memberAddress},
+			NULL, DEFAULT, DEFAULT, DEFAULT
+		)
+	</insert>
+	
 </mapper>
