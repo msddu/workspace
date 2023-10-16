@@ -37,14 +37,4 @@ public class Member {
 	private int authority;
 	
 	
-	
-	}
-
-
- 
-
-
-
-	
-	
-
+}
