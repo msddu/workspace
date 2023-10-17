@@ -114,8 +114,7 @@ WHERE MEMBER_NO = 2;
 
 
 
-
-
+SELECT * FROM MEMBER;
 
 
 
