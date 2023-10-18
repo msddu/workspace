@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -114,6 +115,34 @@ public class MemberController {
 		//회원 가입 실패
 		ra.addFlashAttribute("message","가입 실패...");
 		return "redirect:signup"; //회원가입 페이지로 이동
+	}
+	
+	
+	//@PathVariable("key")
+	// -경로(주소)를 변수에 값으로 사용하는 어노테이션
+	
+	/**빠른 로그인(프로젝트 완성 후 삭제)
+	 * @param memberEmail : 주소 마지막 레벨 문자열(pathVariable) 이용 -> 주소 마지막 문자열을 얻어옴
+	 * @param medel : 데이터 전달용 객체
+	 * @param : 리다이렉트 시 request scope로 데이터 전달 
+	 * @return
+	 */
+	@GetMapping("login/{memberEmail}")
+	public String quickLogin(@PathVariable("memberEmail") String memberEmail , 
+							Model model, RedirectAttributes ra) {
+		
+		//log.debug("memberEmail" + memberEmail);
+		Member loginMember = service.quickLogin(memberEmail);
+		
+		if(loginMember == null) {
+			ra.addFlashAttribute("message", "빠른 로그인 실패");
+		}
+		
+		//(기본값) request scope
+		//@SessionAttributes({"loginMember"}) -> session scope로 이동
+		model.addAttribute("loginMember", loginMember);
+		
+		return "redirect:/";
 	}
 	
 	

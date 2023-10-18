@@ -10,12 +10,21 @@ public interface MemberService {
 	 */
 	Member login(Member inputMember);
 
+	
 	/**회원가입 서비스
 	 * @param inputMember
 	 * @param memberAddress
 	 * @return result
 	 */
 	int signup(Member inputMember, String[] memberAddress);
+	
+	
+	/**빠른 로그인 서비스
+	 * @param inputMember
+	 * @param memberAddress
+	 * @return
+	 */
+	Member quickLogin(String memberEmail);
 	
 
 }

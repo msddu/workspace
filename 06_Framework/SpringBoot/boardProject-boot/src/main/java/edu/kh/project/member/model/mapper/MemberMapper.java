@@ -32,13 +32,13 @@ public interface MemberMapper {
 	 */
 	Member login(Member inputMember);
 
-	
-	
-	
-	
-	/**회원가입
-	 * @param inputMember
-	 * @return
-	 */
+
 	int signup(Member inputMember);
+
+
+	Member login(String memberEmail);
+
+
 }
+
+
