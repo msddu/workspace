@@ -12,6 +12,39 @@ public interface AdminService {
 	 * @return
 	 */
 	Member selectOne(String inputEmail);
+
+	
+	
+	
+	/**회원 탈퇴 복구
+	 * @param memberNo
+	 * @return result
+	 */
+	int restoraion(int memberNo);
+
+
+
+
+	/**권한 변경
+	 * @param memberNo
+	 * @return result
+	 */
+	int changeAuthority(int memberNo);
+
+
+
+
+	/**비밀번호 초기화
+	 * @param memberNo
+	 * @return
+	 */
+	int initPw(int memberNo);
+	
+	
+
+
+
+
 	
 
 }

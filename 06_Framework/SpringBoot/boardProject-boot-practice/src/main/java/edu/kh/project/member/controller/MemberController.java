@@ -1,4 +1,4 @@
-package edu.kh.project.memberpr.controller;
+package edu.kh.project.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,35 +9,39 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.dto.Member;
-import edu.kh.project.memberpr.model.service.MemberPrService;
+
+import edu.kh.project.member.model.service.MemberService;
 
 @Controller
 @RequestMapping("main")
 @SessionAttributes({"loginMember"})
-public class MemberPrController {
-
+public class MemberController {
+	
+	
 	@Autowired
-	private MemberPrService service;
-	
-	
+	private MemberService service;
 	
 	@PostMapping("login")
 	public String login(Member inputMember, Model model, RedirectAttributes ra) {
 		
-		
-		
 		Member loginMember = service.login(inputMember);
 		
-		//로그인 실패
-		if(loginMember == null) {
-			ra.addFlashAttribute("message" , "로그인 실패...");
+		
+		if(loginMember != null) {
+			ra.addFlashAttribute("message" , "로그인 성공");
 		}
-		//로그인 성공
+		
+		if(loginMember == null) {
+			ra.addFlashAttribute("message" , "로그인실패");
+			
+		}
+		
 		model.addAttribute("loginMember", loginMember);
 		
 		return "redirect:/";
-		
 	}
+	
+	
 	
 	
 	
