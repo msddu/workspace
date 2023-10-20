@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
-  background-color: rgb(153, 153, 153)
+  
 }
 
 
@@ -10,27 +10,23 @@
 
 :root {
   font-size: 62.5%;
+ 
 }
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-header {
-  
-}
+
 .header {
-  width: 128rem;
+  width: 100%;
   height: 7.2rem;
   display: flex;
   flex-direction: row;
   margin: auto;
+  background-color: rgb(0, 0, 0);
 }
 a {
   color: rgb(255, 253, 253);
 }
 .cls-section {
   font-size: 1.6rem;
+ 
 }
 .cls-section:nth-child(1),
 .cls-section:nth-child(3) {
@@ -61,8 +57,8 @@ a {
   margin: 0 1rem;
 }
 .nav ul a:hover {
-  background-color: green;
-  color: white;
+  background-color: rgb(0, 255, 0);
+  color: rgb(0, 0, 0);
 }
 .cls-section:nth-child(1) {
   width: 15%;
@@ -118,7 +114,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
+  height: 70px;
 }
 
 .list button{
@@ -128,15 +124,15 @@ a {
   transition: .4s ease-in;
   width: 100%;
   height: 100%;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
-  color: white;
-  background-color: black;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
 }
 
 .btn:hover{
 
-  background-color: white;
+  background-color: rgb(0, 255, 0);
   color: black;
 }
 
@@ -151,39 +147,64 @@ a {
   width: 1280px;
   min-height: 100vh;
   margin: auto;
-
+  background-color: rgb(255, 255, 255);
+ 
 }
-
+/***********************************************************/
 .text{
   width: 100%;
-  height: 20vh;
+  height: 10vh;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+
+
+.selecttext{
+  width: 100%;
+  height: 10vh;
   display: flex;
   
 }
+
+
 
 .btn-text{
   width: 70px;
   height: 40px;
   cursor: pointer;
-  margin: 80px 10px;
+  margin: 30px 10px;
   background-color: white;
+  font-weight: bold;
+  
+  
 }
+
 
 .btn-text:hover{
-  background-color: black;
-  color: white;
+  background-color: rgb(0, 255, 0);
+  
 }
 
-
+/***********************************************/
 
 .board{
   width: 100%;
-  height: 90vh;
+  height: 80vh;
+  border: 1px solid rgb(0, 0, 0);
+  background-color: white;
   
 }
+
+/*************************************************/
+
 
 .foot{
   width: 100%;
   height: 10vh;
+  border: 1px solid rgb(0, 0, 0);
+  
+}
 
+.btn-write{
+  
 }
