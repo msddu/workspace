@@ -11,6 +11,42 @@
 		WHERE BOARD_DEL_FL = 'N'
 		ORDER BY BOARD_NO DESC
 	</select>
+
+	<!-- 게시글 상세 조회-->
+	<select id="selectOne" resultType="Board">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_WRITER, BOARD_CONTENT,
+		TO_CHAR(WRITE_DATE, 'YYYY-MM-DD HH24:MI:SS') WRITE_DATE
+		FROM TB_BOARD
+		WHERE BOARD_DEL_FL = 'N'
+		AND BOARD_NO = #{no}
+	</select>
+
+	<!-- 게시글 작성 -->	
+	<insert id="insert">
+		INSERT INTO TB_BOARD
+		VALUES(SEQ_BOARD_NO.NEXTVAL, #{boardTitle}, #{boardContent}, #{boardWriter}, #{boardPw}, DEFAULT, DEFAULT)
+	</insert>
+
+
+	<!-- 게시글 비밀번호 조회-->
+	<select id="selectBoardPw" resultType="string">
+		SELECT BOARD_PW 
+		FROM TB_BOARD
+		WHERE BOARD_NO = #{boardNo}
+	</select>
+	
+
+	<!-- 게시글 삭제 -->
+	<update id="deleteBoard">
+		UPDATE TB_BOARD SET
+		BOARD_DEL_FL = 'Y'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+
+	
+
+	
+	
 	
 	
 </mapper>
