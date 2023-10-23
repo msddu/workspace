@@ -22,19 +22,22 @@ public class BoardController {
 	//게시글 조회
 	@GetMapping("selectOne")
 	public String selectOne(int no, Model model, RedirectAttributes ra) {
-
+		
+		//서비스 호출
 		Board board = service.selectOne(no);
-
+		
+		//게시글이 null값이 아니면
 		if(board != null) {
+			
 			model.addAttribute("board", board);
 			return "board/selectOne";
 		}
-
+		//게시글이 null값이면 메시지 전달
 		ra.addFlashAttribute("message", "게시글이 존재하지 않습니다.");
 		return "redirect:/";
 	}
 
-	//이게 왜 필요한거지?
+	
 	@GetMapping("insert")
 	public String insert() {
 		return "board/insert";
@@ -44,11 +47,14 @@ public class BoardController {
 	//게시글 작성
 	@PostMapping("insert")
 	public String insert(Board board, RedirectAttributes ra) {
-
+		
+		//insert 성공 or 실패  result에 저장
 		int result = service.insert(board);
 		
+		//성공 시 메시지 전달
 		ra.addFlashAttribute("message", "글쓰기 성공");
 		
+		//메인 화면으로...
 		return "redirect:/";
 	}
 
@@ -57,6 +63,7 @@ public class BoardController {
 	@PostMapping("deleteBoard")
 	public String deleteBoard(String boardPw, int boardNo, RedirectAttributes ra) {
 
+		
 		int result = service.deleteBoard(boardPw, boardNo);
 
 		if(result > 0) {
