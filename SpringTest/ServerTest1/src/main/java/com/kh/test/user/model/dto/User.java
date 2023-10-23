@@ -11,10 +11,10 @@ import lombok.ToString;
 @ToString
 public class User {
 	
-	private int UserNo;
-	private String UserId;
-	private String UserName;
-	private int UserAge;
+	private int userNo;
+	private String userId;
+	private String userName;
+	private int userAge;
 	
 	
 	

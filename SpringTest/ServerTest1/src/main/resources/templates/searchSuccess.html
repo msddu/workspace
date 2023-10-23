@@ -9,22 +9,19 @@
     <h1>회원 정보</h1>
     
 
-    <table border="1" th:object = "${loginMember}">
+    <table border="1" >
         <tr>
             <th>회원번호</th>
-            <td th:text= *{user_no}>내용</td>
-        </tr>
-        <tr>
             <th>회원아이디</th>
-            <td th:text= *{user_id}>내용</td>
-        </tr>
-        <tr>
             <th>회원이름</th>
-            <td th:text= *{user_name}>내용</td>
-        </tr>
-        <tr>
             <th>회원나이</th>
-            <td th:text= *{user_age>내용</td>
+           
+        </tr>
+        <tr th:object = "${loginMember}">
+            <th th:text = "*{user_no}"></th>
+            <th th:text = "*{user_name}"></th>
+            <th th:text = "*{user_id}"></th>
+            <th th:text = "*{user_age}"></th>
         </tr>
 
 
