@@ -33,10 +33,32 @@ public interface MemberMapper {
 	Member login(Member inputMember);
 
 
+	/**회원 가입
+	 * @param inputMember
+	 * @return
+	 */
 	int signup(Member inputMember);
 
 
+	/**로그인
+	 * @param memberEmail
+	 * @return
+	 */
 	Member login(String memberEmail);
+
+
+	/**이메일 중복 검사
+	 * @param email
+	 * @return 0또는 1
+	 */
+	int checkEmail(String email);
+
+
+	/**닉네임 중복 검사
+	 * @param nickname
+	 * @return 0또는 1
+	 */
+	int checkNickname(String nickname);
 
 
 }

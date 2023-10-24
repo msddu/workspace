@@ -78,10 +78,29 @@ memberEmail.addEventListener("input" , ()=>{
 
   //입력 받은 이메일이 정규식과 일치하는 경우
   if(regEx.test(memberEmail.value)){
-    emailMessage.innerText = "유효한 이메일 형식 입니다"
-    emailMessage.classList.add("confirm");  //초록색 글씨 추가
-    emailMessage.classList.remove("error"); //빨간색 글씨 제거
-    checkObj.memberEmail = true;   //유효한 상태임을 기록
+
+    /*============ 이메일 중복 검사(비동기)================================ */
+    
+    fetch("/member/checkEmail?email=" + memberEmail.value)
+    .then(response => response.text())
+    .then(result => {
+      if(result == 0){  //중복x
+        emailMessage.innerText = "사용 가능한 이메일 입니다"
+        emailMessage.classList.add("confirm");  //초록색 글씨 추가
+        emailMessage.classList.remove("error"); //빨간색 글씨 제거
+        checkObj.memberEmail = true;   //유효한 상태임을 기록
+      }
+      else{  //중복o
+        emailMessage.innerText = "이미 사용중인 이메일  입니다"
+        emailMessage.classList.add("error");  //초록색 글씨 추가
+        emailMessage.classList.remove("confirm"); //빨간색 글씨 제거
+        checkObj.memberEmail = false;   //유효한 상태임을 기록
+      }
+    })
+    .catch(e => console.log(e))
+
+    /* =================================================================== */
+
   }
   //입력 받은 이메일이 정규식과 일치하지 않은 경우
   else{
@@ -249,10 +268,25 @@ memberNickname.addEventListener("input", ()=>{
   const regEx = /^[가-힣\w\d]{2,10}$/;
 
   if(regEx.test(memberNickname.value)){
-    nickMessage.innerText = "유효한 닉네임 입니다."
-    nickMessage.classList.add("confirm");
-    nickMessage.classList.remove("error");
-    checkObj.memberNickname = "true"
+
+    fetch("/member/checkNickname?nickname?=" + memberNickname.value)
+    .then(response => response.text())
+    .then(result => {
+      if(result  == 0){
+        nickMessage.innerText = "사용 가능한 닉네임 입니다."
+        nickMessage.classList.add("confirm");
+        nickMessage.classList.remove("error");
+        checkObj.memberNickname = "true"
+      }
+      else{
+        nickMessage.innerText = "이미 사용중인 입니다."
+        nickMessage.classList.remove("confirm");
+        nickMessage.classList.add("error");
+        checkObj.memberNickname = "false"
+      }
+    })
+    .catch(e => console.log(e))
+
   }
 
   else{
