@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.kh.test.customer.model.mapper.CustomerMapper">
+	
+	
+
+	<update id="updateMember">
+		UPDATE "CUSTOMER" SET 
+		CUSTOMER_NAME = #{inputName},
+		CUSTOMER_TEL = #{inputTel},
+		CUSTOMER_ADDRESS  = #{inputAddress}
+		WHERE CUSTOMER_NO  = #{inputNo}
+	</update>
+	
+	
+</mapper>
