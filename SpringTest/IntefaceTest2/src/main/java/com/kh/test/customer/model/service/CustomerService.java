@@ -1,12 +1,11 @@
 package com.kh.test.customer.model.service;
 
+import com.kh.test.customer.model.dto.Customer;
+
+
+
 
 public interface CustomerService {
-
-	int updateMember(int inputNo, String inputName, int inputTel, String inputAddress);
-
 	
-
-	
-	
+	int updateCustomer(Customer customer);
 }

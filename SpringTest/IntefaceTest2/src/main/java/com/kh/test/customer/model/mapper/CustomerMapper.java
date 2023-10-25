@@ -1,13 +1,16 @@
 package com.kh.test.customer.model.mapper;
 
+import java.util.Map;
+
+import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
+
+import com.kh.test.customer.model.dto.Customer;
 
 @Mapper
 public interface CustomerMapper {
 
-	int updateMember(int inputNo, String inputName, int inputTel, String inputAddress);
-
-	
+	int updateCustomer(Customer customer);
 
 
 }
