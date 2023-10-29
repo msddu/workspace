@@ -50,7 +50,7 @@
                                     <a href="#" th:text="*{boardTitle}">게시글 제목</a>                                
                                     <a th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode}, boardNo=*{boardNo}, cp=${pagination.currentPage}) }" 
 
-                                        th:text="*{boardTitle}">게시글 제목</a>                                
+                                        th:text="*{boardTitle}">게시글제목</a>                                
 
                                     <!-- 댓글 수 -->
                                     <th:block th:text="|[*{commentCount}]|"></th:block>
