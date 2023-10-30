@@ -75,7 +75,7 @@ nav ul li ul a {
   width: 100%;
 }
 nav > ul > li:hover {
-  background-color: #12d205;
+  background-color: rgb(147, 251, 1);
   color: white;
 }
 nav > ul > li:hover > ul {

@@ -47,7 +47,7 @@
                                 <td> 
                                     <!-- 썸네일 추가 예정 -->
 
-                                    <a href="#" th:text="*{boardTitle}">게시글 제목</a>                                
+                                    <!-- <a href="#" th:text="*{boardTitle}">게시글 제목</a>                                 -->
                                     <a th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode}, boardNo=*{boardNo}, cp=${pagination.currentPage}) }" 
 
                                         th:text="*{boardTitle}">게시글제목</a>                                
@@ -80,7 +80,7 @@
             <!-- ============================================================================================================== -->
 
             <!-- 게시글이 있을 때만 페이지네이션이 보이게 할 예정 -->
-            <div class="pagination-area">
+            <!-- <div class="pagination-area"> -->
             <!-- 게시글이 있을 때만 페이지네이션이 보이게 함 -->
             <div class="pagination-area" th:if="${#lists.size(boardList) > 0}">
 

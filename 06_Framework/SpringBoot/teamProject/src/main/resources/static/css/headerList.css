@@ -6,7 +6,6 @@
     /* border: 1px solid black; */
     z-index: 1000;
    
-    
   }
 
   
@@ -58,7 +57,7 @@ a{
 }
 
 .menu > li:hover {
-  background-color: #12d205;
+  background-color: rgb(147, 251, 1);
   transition-duration: 0.1s;
   
 }

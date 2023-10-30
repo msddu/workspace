@@ -131,9 +131,19 @@
     cursor: pointer;
 }
 
+
+.comment-write-area{
+    border: 1px solid black;
+    width: 1280px;
+}
+
+.commentContent{
+    width: 500px;
+}
+
 .board-btn-area button:hover{
     background-color: white;
-    color : #34de28;
+    color : rgb(147, 251, 1);
     border: 2px solid #000000;
 }
 
