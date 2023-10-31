@@ -87,32 +87,15 @@
                 <ul class="pagination">
 
                     <!-- 첫 페이지로 이동 -->
-                    <li><a href="#">&lt;&lt;</a></li>
                     <li>
                         <a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=1)}">&lt;&lt;</a>
                     </li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a href="#">&lt;</a></li>
+                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=${pagination.prevPage})}">&lt;</a></li>
 
                     <!-- 특정 페이지로 이동 -->
-                    <!-- 현재 보고있는 페이지 -->
-                    <li>
-                        <a class="current">1</a>
-                        <a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=${pagination.prevPage})}">&lt;</a>
-                    </li>
-
-                    <!-- 보고있지 않은 페이지 -->                    
-                    <li> <a href="#">2</a> </li>
-                    <li> <a href="#">3</a> </li>
-                    <li> <a href="#">4</a> </li>
-                    <li> <a href="#">5</a> </li>
-                    <li> <a href="#">6</a> </li>
-                    <li> <a href="#">7</a> </li>
-                    <li> <a href="#">8</a> </li>
-                    <li> <a href="#">9</a> </li>
-                    <li> <a href="#">10</a> </li>
-
+                   
 
                     <!-- 특정 페이지로 이동 -->
 
@@ -132,13 +115,9 @@
                     </th:block>
 
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a href="#">&gt;</a></li>
-                    <li>
-                        <a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=${pagination.nextPage})}">&gt;</a>
-                    </li>
+                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=${pagination.nextPage})}">&gt;</a></li>
 
                     <!-- 끝 페이지로 이동 -->
-                    <li><a href="#">&gt;&gt;</a></li>
                     <li>
                         <a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=${pagination.maxPage})}">&gt;&gt;</a>
                     </li>
