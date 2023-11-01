@@ -268,6 +268,7 @@ public class BoardController {
 		return service.like(paramMap);  //-1(실패) / 0이상 (성공)
 	}
 	
+	
 
 
 
