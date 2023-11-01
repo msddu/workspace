@@ -26,7 +26,17 @@ public interface MyPageMapper {
 	 */
 	int changePw(Map<String, Object> map);
 
+	
+	
 	int secession(int memberNo);
+	
+	
+
+	/**프로필 이미지 수정
+	 * @param loginMember
+	 * @return result
+	 */
+	int profile(Member loginMember);
 
 	
 	
