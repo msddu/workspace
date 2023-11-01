@@ -12,6 +12,7 @@
 
 
    
+    <link rel="stylesheet" href="../../static/css/main.css">
 
 
     <header>
@@ -43,7 +44,7 @@
         <div class="search">
           <form action="#" method="get" id="list-search">
             <div>
-              <input type="text" class="search-input"  placeholder="검색어를 입력하세요">
+              <input type="text" class="search-input"  placeholder="검색어를 입력해주세요.">
               <button>검색</button>
             </div>
           </form>
@@ -55,6 +56,11 @@
         <button class="btn-select">전체</button>
         <button class="btn-select">긴글</button>
         <button class="btn-select">짧은글</button>
+        <select name="key" id="selectKey">
+          <option value="t">작성일순</option>
+          <option value="c">조회순</option>
+          <option value="tc">추천순</option>
+        </select>
       </div>
 
 
@@ -281,14 +287,15 @@
         <div class="com-right">
           <div>
             <ul>
-              <li class="shortkey">단축키</li>
-              <li><a href="#">1.축구</a></li>
-              <li><a href="#">2.야구</a></li>
-              <li><a href="#">3.농구</a></li>
-              <li><a href="#">4.배구</a></li>
-              <li><a href="#">5.테니스</a></li>
-              <li><a href="#">6.헬스</a></li>
-              <li><a href="#">7.기타</a></li>
+              <li class="shortkey">바로가기</li>
+              <br>
+              <hr>
+              <li><a href="#"> 전체</a></li>
+              <li><a href="#"> 축구</a></li>
+              <li><a href="#"> 야구</a></li>
+              <li><a href="#"> 농구</a></li>
+              <li><a href="#"> 헬스</a></li>
+              <li><a href="#"> 기타</a></li>
             </ul>
           </div>
         </ㅇ>
