@@ -11,125 +11,41 @@
     <link rel="stylesheet" th:href="@{/css/footer.css}">
 
 
-    <link rel="stylesheet" href="../../static/css/header.css">
-    <link rel="stylesheet" href="../../static/css/headerList.css">
-    <link rel="stylesheet" href="../../static/css/main.css">
-
-
-    <!-- <header>
-      <th:block th:replace="~{common/header}"></th:block>
-      <th:block th:replace="~{common/headerList}"></th:block>
-    </header> -->
-
+   
 
 
     <header>
-      <div class="header">
-        <section class="cls-section">
-          <div class="nav">
-            <a href="#" class="nav-a" id="nav-logo">로고</a>
-          </div>
-        </section>
-        <section class="cls-section">
-          <div class="nav">
-            <nav>
-              <ul>
-                <li id="nav-li">
-                  <a href="#" class="nav-a" id="nav-1">커뮤니티</a>
-                  <ul id="nav-li-ul">
-                    <li>
-                      <a href="#" id="long">긴 글</a>
-                    </li>
-                    <li>
-                      <a href="#" id="short">짧은 글</a>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="#" class="nav-a" id="nav-2">지식in</a></li>
-                <li><a href="#" class="nav-a" id="nav-3">쇼츠</a></li>
-              </ul>
-            </nav>
-          </div>
-        </section>
-        <section class="cls-section">
-          <form action="#">
-            <div class="cls-search">
-              <input type="text" class="search-btn" />
-              <button class="btn-search">
-                <img src="../../static/images/search_icon.png" id="img-search" />
-              </button>
-            </div>
-          </form>
-          <div class="cls-login">
-            <a href="#">로그인</a>
-          </div>
-        </section>
-      </div>
-
-
-      <div class="list">
-        <ul class="menu">
-          <li>
-              <a href="#">축구</a>
-              <ul class="submenu">
-              <li><a href="#">국내축구</a></li>
-              <li><a href="#">해외축구</a></li>
-              </ul>
-          </li>
-          <li>
-              <a href="#">야구</a>
-              <ul class="submenu">
-              <li><a href="#">submenu01</a></li>
-              <li><a href="#">submenu02</a></li>
-              </ul>
-          </li>
-          <li>
-              <a href="#">농구</a>
-              <ul class="submenu">
-              <li><a href="#">submenu01</a></li>
-              <li><a href="#">submenu02</a></li>
-              </ul>
-          </li>
-          
-          
-          <li>
-              <a href="#">헬스</a>
-              <ul class="submenu">
-              <li><a href="#">submenu01</a></li>
-              <li><a href="#">submenu02</a></li>
-              </ul>
-          </li>
-          <li>
-              <a href="#">기타</a>
-              <ul class="submenu">
-              <li><a href="#">submenu01</a></li>
-              <li><a href="#">submenu02</a></li>
-              </ul>
-          </li>
-          </ul>
-        
-      </div>
-    
-
-
-
-    </header>
-    
-    
-  
+      <th:block th:replace="~{common/header}"></th:block>
     </header>
 
+   
   </head> 
 
   <body>
 
     <main>
-     
+
+      <div class="image">
+        <img src="/images/토트넘2.jpeg">
+      </div>
+
+
+      
+ 
+      <th:block th:replace="~{common/headerList}"></th:block>
+
+      <div class="sortation">
+        <h1>커뮤니티</h1>
+      </div>
+
+      
 
         <div class="search">
           <form action="#" method="get" id="list-search">
-            <input type="text" class="search-input"  placeholder="검색어를 입력하세요">
-            <button>검색</button>
+            <div>
+              <input type="text" class="search-input"  placeholder="검색어를 입력하세요">
+              <button>검색</button>
+            </div>
           </form>
         </div>
 

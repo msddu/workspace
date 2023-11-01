@@ -7,18 +7,19 @@
   }
 
 
+  
   .list{
     
-    width: 128rem;
+    width: 128.2rem;
     height: 70px;
     /* border: 1px solid black; */
-    z-index: 1000;
+
     margin: auto;
    
   }
 
   
-  .menu {
+.menu {
     width: 100%;
     overflow: hidden;
     margin:  auto;
@@ -37,11 +38,12 @@ a{
 }
 
 .menu > li {
-  width: 25.6rem; /*메뉴가 5개*/
+  width: 21.2rem; /*메뉴가 5개 */
   float: left;
   text-align: center; 
   line-height: 70px;  /*menu바 높이*/
   background-color: #000000;
+  z-index: 1000;
   
 }
 
@@ -55,13 +57,19 @@ a{
 
 .submenu > li {
   line-height: 60px;
-  background-color: #9a9a9a;
+  background-color: #dddddd;
+  z-index: 1000;
  
 }
 
 .submenu {
   height: 0; /*ul의 높이를 안보이게 처리*/
   overflow: hidden;
+  z-index: 1000;
+  position: absolute;
+    z-index: 1000;
+    width:  21.2rem;
+ 
  
 }
 
