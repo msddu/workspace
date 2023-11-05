@@ -114,7 +114,7 @@ public class EditBoardController {
 	 * @param images : 제출된 input type = "file" name = "images" 파라미터 묶음
 	 * 					->(주의!) 제출된 파일이 없어도 input 수 만큼 List 요소 존재
 	 * @return
-	 * @throws IOException 
+	 * @throws IOException 	
 	 * @throws IllegalStateException 
 	 */
 	@PostMapping("{boardCode:[0-9]+}/insert")

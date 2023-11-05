@@ -185,4 +185,6 @@ WHERE BOARD_NO = 1495) C
            
   COMMIT;
 
+ 
+ SELECT * FROM ;
 
