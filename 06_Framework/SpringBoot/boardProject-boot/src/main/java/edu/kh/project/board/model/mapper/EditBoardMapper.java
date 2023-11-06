@@ -28,6 +28,32 @@ public interface EditBoardMapper {
 	 * @return result(insert 성공한 행의 수 == 삽입된 이미지 수)
 	 */
 	int insertUploadList(List<BoardImg> uploadList);
+
+	/**게시글 부분만 수정
+	 * @param board
+	 * @return result
+	 */
+	int updateBoard(Board board);
+
+	/**이미지 삭제
+	 * @param map
+	 * @return result
+	 */
+	int imageDelete(Map<String, Object> map);
+
+	/**이미지 한개 수정
+	 * @param img
+	 * @return
+	 */
+	int updateBoardImg(BoardImg img);
+
+	/**이미지 한개 삽입
+	 * @param img
+	 */
+	void boardImgInsert(BoardImg img);
+	
+	
+	
 	
 
 }

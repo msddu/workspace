@@ -25,6 +25,7 @@ public class BoardServiceImpl implements BoardService{
 		map.put("boardList", boardList);
 		
 		return map;
+		
 	}
 	
 	

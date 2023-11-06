@@ -10,14 +10,12 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class MainController {
+public class mainController {
 
 	
 	
 	@RequestMapping("/")
 	public String MainPage() {
-		
-		
 		
 		
 		return "common/main";

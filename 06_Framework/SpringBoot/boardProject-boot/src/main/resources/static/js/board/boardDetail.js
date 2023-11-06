@@ -134,3 +134,15 @@ if(deleteBtn != null){ //삭제 버튼이 존재하는 경우
   });
 }
 
+//--------------------------------------------------------------------------------------
+
+/* 수정 버튼 클릭 시 수정 화면 요청 */
+const updateBtn = document.getElementById("updateBtn");
+
+if(updateBtn != null){ //수정 버튼 존재 시
+  updateBtn.addEventListener("click",()=>{
+    
+    let url = `/editBoard/${boardCode}/${boardNo}/update${location.search}`;
+    location.href = url;
+  });
+}
