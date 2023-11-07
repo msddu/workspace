@@ -85,6 +85,10 @@ public class FileConfig implements WebMvcConfigurer{
 	      StandardServletMultipartResolver multipartResolver = new StandardServletMultipartResolver();
 	      return multipartResolver;
 	   }
+	   
+	   
+	   
+	   
 	
 	
 	
