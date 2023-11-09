@@ -11,7 +11,7 @@
 <body>
 
     <!-- th:with="key=value" : 변수 선언 -->
-    <main th:with="boardList=${map.boardList}">
+    
     <main th:with="boardList=${map.boardList}, pagination=${map.pagination}">
 
         <th:block th:replace="~{common/header}"></th:block>
