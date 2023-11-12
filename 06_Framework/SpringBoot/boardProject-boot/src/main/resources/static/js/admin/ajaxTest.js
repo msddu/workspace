@@ -25,7 +25,7 @@ selectMemberNo.addEventListener("click", ()=>{
   .then( (email)=>{ //email : 첫 번째 then에서 파싱된 데이터
     console.log("email:" + email);
 
-    //응답 결과(email)이 존재하는 경우
+    //응답 결과(email)이 존재하는 경우ㅍ ㅠㅜㅡ,.
     //있으면 : 이메일 문자열
     //없으면 : 빈칸
     if(email == ''){

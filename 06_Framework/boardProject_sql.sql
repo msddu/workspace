@@ -188,3 +188,12 @@ WHERE BOARD_NO = 1495) C
  
  SELECT * FROM ;
 
+
+
+SELECT * FROM BOARD_LIKE;
+
+
+
+
+
+
