@@ -123,6 +123,9 @@ public class BoardController {
 					model.addAttribute("likeCheck" , "on");
 				}
 			}
+			
+			
+			
 			// 4. 있을 때 -> 조회수 증가
 			//	(쿠키를 이용해서 한 사용자가 
 			//	 특정 게시글에 하루에 1번만 조회수를 증가하게 만들기)
@@ -188,6 +191,8 @@ public class BoardController {
 	                  result = service.updateReadCount(boardNo);
 	               }
 	            } // 3) 종료
+	            
+	            
 
 	            // 4) 조회 수 증가 성공 시
 	            // 쿠키가 적용되는 경로, 수명(당일 23시 59분 59초) 지정

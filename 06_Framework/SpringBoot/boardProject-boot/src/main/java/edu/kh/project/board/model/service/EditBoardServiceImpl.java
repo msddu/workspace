@@ -73,6 +73,7 @@ public class EditBoardServiceImpl implements EditBoardService{
 		
 		//images에서 업로드된 파일 선별하기
 		for(int i = 0; i<images.size(); i++) {
+			
 			//i번째 요소의 파일 크기가 0보다 크다(파일이 있다)
 			if(images.get(i).getSize() > 0) {
 				

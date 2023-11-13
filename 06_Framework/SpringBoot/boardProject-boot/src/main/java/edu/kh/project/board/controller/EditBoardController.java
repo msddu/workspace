@@ -137,6 +137,8 @@ public class EditBoardController {
 		//서비스 호출 후 결과 반환
 		int boardNo = service.insertBoard(board,images);
 		
+		
+		
 		//게시글 작성 성공 시
 		//지금 작성한 글의 상세조회 화면으로 리다이렉트
 		if(boardNo > 0 ) {

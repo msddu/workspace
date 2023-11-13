@@ -104,6 +104,8 @@
       	AND IMG_ORDER = #{imgOrder}
 	 </update>
 	 
+	 
+	 
 	 <!--이미지 한개 삽입-->
 	 <insert id="boardImgInsert">
 		 INSERT INTO "BOARD_IMG"
