@@ -93,15 +93,6 @@
 	position: relative;
 }
 
-/* 
-.child-comment:before {
-	content: "\f0a4";
-	font-family: "FontAwesome";
-	
-	position : absolute;
-	left : 0;
-	top : 35px;
-} */
 
 
 /* 답글 */
