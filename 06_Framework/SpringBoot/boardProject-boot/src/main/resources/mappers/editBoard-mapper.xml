@@ -45,22 +45,6 @@
 	 </insert>
  
  
- 
- 
-	 <!--업로드된 게시글 이미지 일괄 삽입-->
-	  <!-- 동적 SQL 중 <foreach> 
-	      - 특정 SLQ 구문을 반복할 때 사용
-	      - 반복되는 사이에 구분자(separator)를 추가할 수 있음.
-	      
-	      collection : 반복할 객체의 타입 작성(list, set, map...)
-	      item : collection에서 순차적으로 꺼낸 하나의 요소를 저장하는 변수
-	      index : 현재 반복 접근중인 인덱스 (0,1,2,3,4 ..)
-	      
-	      open : 반복 전에 출력할 sql
-	      close : 반복 종료 후에 출력한 sql
-	      
-	      separator : 반복 사이사이 구분자
-	    -->
 	 <insert id="insertUploadList" parameterType="list">
 		 INSERT INTO "BOARD_IMG"
 		 
@@ -112,15 +96,6 @@
       	VALUES(SEQ_IMG_NO.NEXTVAL, #{imgPath}, #{imgRename}, #{imgOriginalName}, #{imgOrder}, #{boardNo}
       )
 	 </insert>
- 
- 
- 
- 
- 
- 
- 
- 
- 
  
  
  
