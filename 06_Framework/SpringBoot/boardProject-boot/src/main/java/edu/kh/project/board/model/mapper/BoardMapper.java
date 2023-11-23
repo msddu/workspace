@@ -72,6 +72,9 @@ public interface BoardMapper {
 	 * @return result
 	 */
 	int updateReadCount(int boardNo);
+
+
+	List<String> selectDbImageList();
 	
 	
 
