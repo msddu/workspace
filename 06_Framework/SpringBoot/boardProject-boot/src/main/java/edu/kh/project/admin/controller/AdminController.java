@@ -6,14 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.RequestAttributes;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.admin.model.service.AdminService;
 import edu.kh.project.member.model.dto.Member;
 import lombok.extern.slf4j.Slf4j;
-import oracle.jdbc.proxy.annotation.Post;
+
 
 @Slf4j 
 @Controller
