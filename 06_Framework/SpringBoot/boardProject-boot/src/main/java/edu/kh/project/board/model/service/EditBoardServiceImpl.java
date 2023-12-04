@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(rollbackFor = Exception.class)
+@Transactional(rollbackFor = Exception.class)  // service -> controller(알아서 커밋 or 롤백) ==> AOP적용 기술
 @PropertySource("classpath:/config.properties") //classpath:/config.properties -> config.properites에서 사용
 public class EditBoardServiceImpl implements EditBoardService{
 
