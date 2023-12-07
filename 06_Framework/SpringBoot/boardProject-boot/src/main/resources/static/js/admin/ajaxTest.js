@@ -69,6 +69,8 @@ btn2.addEventListener("click", ()=>{
     }
   })
 
+
+
   .catch(e=>console.log(e));  //예외 발생 시 수행
 
 
