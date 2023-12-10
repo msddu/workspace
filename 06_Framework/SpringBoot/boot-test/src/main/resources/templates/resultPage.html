@@ -1,0 +1,21 @@
+<!DOCTYPE html >
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<main>
+    <h1 th:text="${map.name} + '님의 구매목록' "></h1>
+    <h3 th:text="'검은 펜' +${map.blackPen} + '개:' +${map.blackPen * 500}"></h3>
+    <h3 th:text="'빨간 펜' +${map.redPen} +'개:' +${map.redPen * 700}"></h3>
+    <h3 th:text="'파란 펜' +${map.bluePen} +'개:' +${map.bluePen * 700}"></h3>
+    <h3 th:text="'화이트' +${map.white} +'개:' +${map.white * 1000} "></h3>
+    <hr>
+    <h2 th:text="'총합' +${total}+ '원을 결제하셨습니다' "></h2>
+</main> 
+
+
+</body>
+</html>
