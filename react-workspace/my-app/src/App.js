@@ -11,6 +11,9 @@ import Props3 from './components/R05_Props3';
 import State1 from './components/R06_State1';
 import State2 from './components/R07_State2';
 import State3 from './components/R08_State3';
+import Context1 from  './components/R10_Context1';
+import Context2 from './components/R11_Context2';
+import Context3 from './components/R13_Context/Parent';
 
 /* ====================================================== */
 /* 
@@ -34,7 +37,7 @@ function App() {
      
      <hr/>
 
-     <Props1 />
+     {/* <Props1 />
      <Props1 name ='홍길동' num ='1'/>
      <Props1 name ='김철수' num ='2'/>
 
@@ -57,7 +60,10 @@ function App() {
 
      <hr/>
 
-     <State3 />
+     <State3 /> */}
+     {/* <Context1/> */}
+     {/* <Context2/> */}
+     <Context3/>
 
     </>
     
