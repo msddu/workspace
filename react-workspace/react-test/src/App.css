@@ -1,0 +1,20 @@
+div{
+  display: flex;
+}
+
+
+.minusBtn{
+  width: 40px;
+  height: 40px;
+  background-color: cyan;
+  border: 5px solid black;
+  border-radius: 10px;
+} 
+
+.plusBtn{
+  width: 40px;
+  height: 40px;
+  background-color: magenta;
+  border: 5px solid black;
+  border-radius: 10px;
+}
