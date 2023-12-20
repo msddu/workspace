@@ -79,6 +79,7 @@
 	 </delete>
 	 
 	 
+	 <!--이미지 수정-->
 	 <update id="updateBoardImg">
 		 UPDATE "BOARD_IMG" SET
       	IMG_PATH = #{imgPath},
